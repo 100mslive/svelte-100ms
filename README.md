@@ -1,6 +1,6 @@
 A hello world app for Svelte + 100ms. Built with SvelteKit.
 
-### Steps I followed
+### Steps
 
 1. Svelte kit create, git init
    ```sh
@@ -14,4 +14,10 @@ A hello world app for Svelte + 100ms. Built with SvelteKit.
 2. Delete everything inside the routes folder(apart from styles.css) - let's start clean.
 3. Svelte dev would stop here due to error. Create a +page.svelte file in routes with head and importing styles.
 4. `yarn add @100mslive/hms-video-store` and then create a hms.ts file as described [here](https://www.100ms.live/docs/javascript/v2/features/integration#java-script).
-5. 
+5. Create structure for the UI components -
+   - page.svelte - already there, this will render Header, Footer and either of JoinForm or Conference depending on whether the user is connected to the room. 
+   - JoinForm.svelte - we'll create a form to take in the username and the auth token here. Rendered when not connected to room.
+   - Conference.svelte - top level component when connected to room. 
+   - Header.svelte - normal header with a leave button
+   - Footer.svelte - footer with audio video toggle buttons
+   - Video.svelte - responsible for rendering a video given a track id, used by Conference component
