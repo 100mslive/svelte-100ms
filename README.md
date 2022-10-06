@@ -12,4 +12,5 @@ A hello world app for Svelte + 100ms. Built with SvelteKit.
    ```
 
 2. Delete everything inside the routes folder(apart from styles.css) - let's start clean.
-3. 
+3. Svelte dev would stop here due to error. Create a +page.svelte file in routes with head and importing styles.
+4. 
