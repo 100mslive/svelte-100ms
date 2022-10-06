@@ -10,3 +10,6 @@ A hello world app for Svelte + 100ms. Built with SvelteKit.
    > yarn dev --open
    > git init && git add -A && git commit -m "Initial commit"
    ```
+
+2. Delete everything inside the routes folder(apart from styles.css) - let's start clean.
+3. 
