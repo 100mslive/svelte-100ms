@@ -2,7 +2,7 @@ A hello world app for Svelte + 100ms. Built with SvelteKit.
 
 Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/react-quickstart) for Svelte.
 
-### Steps
+### Steps to follow - (with commits linked for the step)
 
 1. Svelte kit create, git init
    ```sh
@@ -23,6 +23,7 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
    - Header.svelte - normal header with a leave button
    - Footer.svelte - footer with audio video toggle buttons
    - Video.svelte - responsible for rendering a video given a track id, used by Conference component
+   - Peer.svelte - responsible for rendering Peer Video and peer's name etc.(not part of the above commit, added in below steps)
 6. The way 100ms sdk works is that there are two pieces hmsActions and hmsStore, while actions let you perform any action in the room, store acts as a global reactive database containing all the information about the room acting as source of truth. Selectors are functions which operate over this store to give some subset of information for e.g. name of other peers in the room.
 7. Now 100ms SDK has a very similar syntax to Svelte store in the sense that it has a subscribe function which returns unsubscribe function. We'll use it in two ways - 
    1. directly in the components, subscribing with the proper selector and calling the unsubscribe method in onDestroy
@@ -35,4 +36,4 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
 13. Implement Video component to render video. Also make iterating over peers [keyed](https://svelte.dev/tutorial/keyed-each-blocks).
 14. Make Join remember device selection. If you don't see proper camera selected, you can run `await navigator.mediaDevices.enumerateDevices()
     09:55:27.108` to get a list of all devices, choose the correct device id for the camera and then run - `__hms.actions.setVideoSettings({deviceId: "<device id>"})`
-15. 
+15. Implement Footer with audio and video toggle buttons, also add store for knowing current audio video state in hmsStores

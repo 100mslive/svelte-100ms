@@ -24,7 +24,7 @@
 <Header/>
 {#if $hmsIsConnected}
     <Conference />
+    <Footer/>
 {:else}
     <JoinForm />
 {/if}
-<Footer/>
