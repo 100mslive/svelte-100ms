@@ -4,7 +4,7 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
 
 ### Steps to follow - (with commits linked for the step)
 
-1. Svelte kit create, git init
+1. [Commit](https://github.com/100mslive/svelte-100ms/commit/e8d29ab266b3d9a1b92a55bcf0d2c259dc206c51) - Svelte kit create, git init
    ```sh
    > npm create svelte@latest svelte-hms-world
    > cd svelte-hms-world
@@ -13,10 +13,10 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
    > git init && git add -A && git commit -m "Initial commit"
    ```
 
-2. Delete everything inside the routes folder(apart from styles.css) - let's start clean.
-3. Svelte dev would stop here due to error. Create a +page.svelte file in routes with head and importing styles.
-4. `yarn add @100mslive/hms-video-store` and then create a hms.ts file as described [here](https://www.100ms.live/docs/javascript/v2/features/integration#java-script).
-5. Create structure for the UI components -
+2. [Commit](https://github.com/100mslive/svelte-100ms/commit/da65da4875b279ab10cc43f2cc18a2aff0471388) -Delete everything inside the routes folder(apart from styles.css) - let's start clean.
+3. [Commit](https://github.com/100mslive/svelte-100ms/commit/11f3359672ad89f6e0fdd0e8205d66a9847e53d7) -Svelte dev would stop here due to error. Create a +page.svelte file in routes with head and importing styles.
+4. [Commit](https://github.com/100mslive/svelte-100ms/commit/37ed4c2d5cee13166d9aae433e05fc10031c5794) - `yarn add @100mslive/hms-video-store` and then create a hms.ts file as described [here](https://www.100ms.live/docs/javascript/v2/features/integration#java-script).
+5. [Commit](https://github.com/100mslive/svelte-100ms/commit/1c73da6d6c35b3f8d72e7af431c352271f44c0a7) - Create structure for the UI components -
    - page.svelte - already there, this will render Header, Footer and either of JoinForm or Conference depending on whether the user is connected to the room. 
    - JoinForm.svelte - we'll create a form to take in the username and the auth token here. Rendered when not connected to room.
    - Conference.svelte - top level component when connected to room. 
@@ -28,12 +28,12 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
 7. Now 100ms SDK has a very similar syntax to Svelte store in the sense that it has a subscribe function which returns unsubscribe function. We'll use it in two ways - 
    1. directly in the components, subscribing with the proper selector and calling the unsubscribe method in onDestroy
    2. Creating a few helper svelte store wrappers in hmsStores.ts for commonly used selectors
-8. Create a hmsStore.ts file with helper function to convert from hms to svelte store and create two stores for isConnected and peers in the room.
-9. Implement page.svelte, also add a leave on unload function for handling tab closing. Implement header with a logo and a leave button.
-10. Implement JoinForm, takes in name and token and calls join function
-11. Implement Conference, create a stub Peer.Svelte. Peer.svelte will use the Video.svelte file to render video and additionally show more details related to the peer.
-12. Implement Peer Component using Video and showing the peer name
-13. Implement Video component to render video. Also make iterating over peers [keyed](https://svelte.dev/tutorial/keyed-each-blocks).
-14. Make Join remember device selection. If you don't see proper camera selected, you can run `await navigator.mediaDevices.enumerateDevices()
+8. [Commit](https://github.com/100mslive/svelte-100ms/commit/1369ffb7df99011597ccef154e98ee46c0a15f79) - Create a hmsStore.ts file with helper function to convert from hms to svelte store and create two stores for isConnected and peers in the room.
+9. [Commit](https://github.com/100mslive/svelte-100ms/commit/f56642e570ff6147d7dda4b0a476f5a8301fbc53) - Implement page.svelte, also add a leave on unload function for handling tab closing. Implement header with a logo and a leave button.
+10. [Commit](https://github.com/100mslive/svelte-100ms/commit/5709a4b4246b181d9c2af6ff54a1ee27d477d2cf) - Implement JoinForm, takes in name and token and calls join function
+11. [Commit](https://github.com/100mslive/svelte-100ms/commit/43b4e7c8e0aa4000e1295902846ce6e956b744f1) - Implement Conference, create a stub Peer.Svelte. Peer.svelte will use the Video.svelte file to render video and additionally show more details related to the peer.
+12. [Commit](https://github.com/100mslive/svelte-100ms/commit/a378131b1957e0b7626ae32dc6670a8706374312) - Implement Peer Component using Video and showing the peer name
+13. [Commit](https://github.com/100mslive/svelte-100ms/commit/e194353be5884a6f09694103b89f8fefbfd642cc) - Implement Video component to render video. Also make iterating over peers [keyed](https://svelte.dev/tutorial/keyed-each-blocks).
+14. [Commit](https://github.com/100mslive/svelte-100ms/commit/1557c88d0360e561244b8577349d36ab2ee65dc9) - Make Join remember device selection. If you don't see proper camera selected, you can run `await navigator.mediaDevices.enumerateDevices()
     09:55:27.108` to get a list of all devices, choose the correct device id for the camera and then run - `__hms.actions.setVideoSettings({deviceId: "<device id>"})`
-15. Implement Footer with audio and video toggle buttons, also add store for knowing current audio video state in hmsStores
+15. [Commit](https://github.com/100mslive/svelte-100ms/commit/64f8c659ea84f976043f880f11f2dcc1a994f199) - Implement Footer with audio and video toggle buttons, also add store for knowing current audio video state in hmsStores
