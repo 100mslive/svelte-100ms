@@ -33,4 +33,6 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
 11. Implement Conference, create a stub Peer.Svelte. Peer.svelte will use the Video.svelte file to render video and additionally show more details related to the peer.
 12. Implement Peer Component using Video and showing the peer name
 13. Implement Video component to render video. Also make iterating over peers [keyed](https://svelte.dev/tutorial/keyed-each-blocks).
-14. 
+14. Make Join remember device selection. If you don't see proper camera selected, you can run `await navigator.mediaDevices.enumerateDevices()
+    09:55:27.108` to get a list of all devices, choose the correct device id for the camera and then run - `__hms.actions.setVideoSettings({deviceId: "<device id>"})`
+15. 

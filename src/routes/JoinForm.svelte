@@ -5,7 +5,7 @@
   let token = '';
 
   function join() {
-    hmsActions.join({ userName: name, authToken: token });
+    hmsActions.join({ userName: name, authToken: token, rememberDeviceSelection: true });
   }
 </script>
 
