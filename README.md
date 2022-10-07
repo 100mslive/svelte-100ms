@@ -2,7 +2,14 @@ A hello world app for Svelte + 100ms. Built with SvelteKit.
 
 Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/react-quickstart) for Svelte.
 
-### Steps to follow - (with commits linked for the step)
+## Demo
+
+- Create an account on https://dashboard.100ms.live/
+- Get an auth token for a room following [this](https://www.100ms.live/docs/javascript/v2/guides/token#getting-a-temporary-token).
+- Go to the [Demo link](https://svelte-100ms.vercel.app/ and enter name auth token). You can send over the link to someone else or
+  open in another tab to test the call.
+
+## Steps to follow - (with commits linked for the step)
 
 1. [Commit](https://github.com/100mslive/svelte-100ms/commit/e8d29ab266b3d9a1b92a55bcf0d2c259dc206c51) - Svelte kit create, git init
    ```sh
