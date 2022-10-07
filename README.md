@@ -1,5 +1,7 @@
 A hello world app for Svelte + 100ms. Built with SvelteKit.
 
+Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/react-quickstart) for Svelte.
+
 ### Steps
 
 1. Svelte kit create, git init
@@ -28,3 +30,5 @@ A hello world app for Svelte + 100ms. Built with SvelteKit.
 8. Create a hmsStore.ts file with helper function to convert from hms to svelte store and create two stores for isConnected and peers in the room.
 9. Implement page.svelte, also add a leave on unload function for handling tab closing. Implement header with a logo and a leave button.
 10. Implement JoinForm, takes in name and token and calls join function
+11. Implement Conference, create a stub Peer.Svelte. Peer.svelte will use the Video.svelte file to render video and additionally show more details related to the peer.
+12. 
