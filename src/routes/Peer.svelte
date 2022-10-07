@@ -1,7 +1,23 @@
 <script>
+    import Video from "./Video.svelte";
+
     export let peer;
 </script>
 
-<p>
-    Peer - {peer.name}
-</p>
+<div class="peer-container">
+    <Video isLocal={peer.isLocal} videoTrackId={peer.videoTrack} />
+    <div class="peer-name">
+        {peer.name} {peer.isLocal ? "(You)" : ""}
+    </div>
+</div>
+
+<style>
+    .peer-name {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .peer-container {
+        padding: 10px;
+    }
+</style>
