@@ -69,6 +69,17 @@ pre {
 	color: var(--color-text);
 }
 
+.btn-danger {
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: 6px 14px;
+	background-color: #f44336;
+	color: white;
+	font-family: inherit;
+	font-size: 14px;
+	cursor: pointer;
+}
+
 .text-column {
 	display: flex;
 	max-width: 48rem;
