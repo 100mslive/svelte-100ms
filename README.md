@@ -27,4 +27,4 @@ A hello world app for Svelte + 100ms. Built with SvelteKit.
    2. Creating a few helper svelte store wrappers in hmsStores.ts for commonly used selectors
 8. Create a hmsStore.ts file with helper function to convert from hms to svelte store and create two stores for isConnected and peers in the room.
 9. Implement page.svelte, also add a leave on unload function for handling tab closing. Implement header with a logo and a leave button.
-10. 
+10. Implement JoinForm, takes in name and token and calls join function
