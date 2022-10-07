@@ -15,7 +15,7 @@
             alt="100ms Logo"
     />
 
-    {#if hmsIsConnected}
+    {#if $hmsIsConnected}
         <button id="leave-btn" class="btn-danger" on:click={leaveRoom}> Leave Room </button>
     {/if}
 </header>
