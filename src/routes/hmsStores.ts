@@ -1,13 +1,14 @@
-import { hmsStore } from './hms';
-import { readable } from 'svelte/store';
 import type { HMSStore } from '@100mslive/hms-video-store';
+import type { Readable } from 'svelte/store';
+import { readable } from 'svelte/store';
+import { hmsStore } from './hms';
 import { selectIsConnectedToRoom, selectPeers } from '@100mslive/hms-video-store';
 
-function readableStoreMaker<T>(selector: (store: HMSStore) => void) {
+function hmsToSvelteStore<T>(selector: (store: HMSStore) => T): Readable<T> {
 	return readable(hmsStore.getState(selector), (set) => {
-		hmsStore.subscribe(set, selector);
+		return hmsStore.subscribe(set, selector);
 	});
 }
 
-export const hmsIsConnected = readableStoreMaker(selectIsConnectedToRoom);
-export const hmsPeers = readableStoreMaker(selectPeers);
+export const hmsIsConnected = hmsToSvelteStore(selectIsConnectedToRoom);
+export const hmsPeers = hmsToSvelteStore(selectPeers);

@@ -22,7 +22,8 @@ A hello world app for Svelte + 100ms. Built with SvelteKit.
    - Footer.svelte - footer with audio video toggle buttons
    - Video.svelte - responsible for rendering a video given a track id, used by Conference component
 6. The way 100ms sdk works is that there are two pieces hmsActions and hmsStore, while actions let you perform any action in the room, store acts as a global reactive database containing all the information about the room acting as source of truth. Selectors are functions which operate over this store to give some subset of information for e.g. name of other peers in the room.
-7. Create a hmsStores.ts file, now 100ms SDK has a very similar syntax to Svelte store in the sense that it has a subscribe function which returns unsubscribe function. We'll use it in two ways - 
+7. Now 100ms SDK has a very similar syntax to Svelte store in the sense that it has a subscribe function which returns unsubscribe function. We'll use it in two ways - 
    1. directly in the components, subscribing with the proper selector and calling the unsubscribe method in onDestroy
    2. Creating a few helper svelte store wrappers in hmsStores.ts for commonly used selectors
-8. 
+8. Create a hmsStore.ts file with helper function to convert from hms to svelte store and create two stores for isConnected and peers in the room.
+9. 
