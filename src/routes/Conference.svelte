@@ -8,7 +8,7 @@
     <h2>Conference</h2>
 
     <div class="peers-container">
-        {#each $hmsPeers as peer}
+        {#each $hmsPeers as peer (peer.id)}
             <Peer {peer} />
         {/each}
     </div>

@@ -32,4 +32,5 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
 10. Implement JoinForm, takes in name and token and calls join function
 11. Implement Conference, create a stub Peer.Svelte. Peer.svelte will use the Video.svelte file to render video and additionally show more details related to the peer.
 12. Implement Peer Component using Video and showing the peer name
-13. 
+13. Implement Video component to render video. Also make iterating over peers [keyed](https://svelte.dev/tutorial/keyed-each-blocks).
+14. 

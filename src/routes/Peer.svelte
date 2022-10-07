@@ -5,7 +5,7 @@
 </script>
 
 <div class="peer-container">
-    <Video isLocal={peer.isLocal} videoTrackId={peer.videoTrack} />
+    <Video isLocal={peer.isLocal} peerId={peer.id} />
     <div class="peer-name">
         {peer.name} {peer.isLocal ? "(You)" : ""}
     </div>
