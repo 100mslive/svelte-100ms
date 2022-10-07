@@ -35,7 +35,7 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
 7. Now 100ms SDK has a very similar syntax to Svelte store in the sense that it has a subscribe function which returns unsubscribe function. We'll use it in two ways - 
    1. directly in the components, subscribing with the proper selector and calling the unsubscribe method in onDestroy
    2. Creating a few helper svelte store wrappers in hmsStores.ts for commonly used selectors
-8. [Commit](https://github.com/100mslive/svelte-100ms/commit/1369ffb7df99011597ccef154e98ee46c0a15f79) - Create a hmsStore.ts file with helper function to convert from hms to svelte store and create two stores for isConnected and peers in the room.
+8. [Commit](https://github.com/100mslive/svelte-100ms/compare/1c73da6d6c35b3f8d72e7af431c352271f44c0a7...1369ffb7df99011597ccef154e98ee46c0a15f79) - Create a hmsStore.ts file with helper function to convert from hms to svelte store and create two stores for isConnected and peers in the room.
 9. [Commit](https://github.com/100mslive/svelte-100ms/commit/f56642e570ff6147d7dda4b0a476f5a8301fbc53) - Implement page.svelte, also add a leave on unload function for handling tab closing. Implement header with a logo and a leave button.
 10. [Commit](https://github.com/100mslive/svelte-100ms/commit/5709a4b4246b181d9c2af6ff54a1ee27d477d2cf) - Implement JoinForm, takes in name and token and calls join function
 11. [Commit](https://github.com/100mslive/svelte-100ms/commit/43b4e7c8e0aa4000e1295902846ce6e956b744f1) - Implement Conference, create a stub Peer.Svelte. Peer.svelte will use the Video.svelte file to render video and additionally show more details related to the peer.
@@ -44,3 +44,4 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
 14. [Commit](https://github.com/100mslive/svelte-100ms/commit/1557c88d0360e561244b8577349d36ab2ee65dc9) - Make Join remember device selection. If you don't see proper camera selected, you can run `await navigator.mediaDevices.enumerateDevices()
     09:55:27.108` to get a list of all devices, choose the correct device id for the camera and then run - `__hms.actions.setVideoSettings({deviceId: "<device id>"})`
 15. [Commit](https://github.com/100mslive/svelte-100ms/commit/64f8c659ea84f976043f880f11f2dcc1a994f199) - Implement Footer with audio and video toggle buttons, also add store for knowing current audio video state in hmsStores
+16. [Commit](https://github.com/100mslive/svelte-100ms/commit/56a8cfd7cf610dd56d8d2a1dcdb1b22e7e9a4e6e) - Fix a minor bug - leave button showing on join page
