@@ -7,7 +7,7 @@ Adapting [100ms React Quickstart](https://www.100ms.live/docs/javascript/v2/guid
 To try out the demo link you can follow these steps - 
 1. Create an account on https://dashboard.100ms.live/
 2. Get an auth token for a room following [this](https://www.100ms.live/docs/javascript/v2/guides/token#getting-a-temporary-token).
-3. Go to the [Demo link](https://svelte-100ms.vercel.app/ and enter name auth token). You can send over the link to someone else or
+3. Go to the [Demo link](https://svelte-100ms.vercel.app/) and enter name and auth token. You can send over the link to someone else or
   open in another tab to test the call.
 
 ## Component structure in the repo
