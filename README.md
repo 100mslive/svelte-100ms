@@ -53,3 +53,19 @@ The top level component is src/page.ts, there are two views, if the user is load
     09:55:27.108` to get a list of all devices, choose the correct device id for the camera and then run - `__hms.actions.setVideoSettings({deviceId: "<device id>"})`
 15. [Commit](https://github.com/100mslive/svelte-100ms/commit/64f8c659ea84f976043f880f11f2dcc1a994f199) - Implement Footer with audio and video toggle buttons, also add store for knowing current audio video state in hmsStores
 16. [Commit](https://github.com/100mslive/svelte-100ms/commit/56a8cfd7cf610dd56d8d2a1dcdb1b22e7e9a4e6e) - Fix a minor bug - leave button showing on join page
+
+
+## Features
+
+### Device Settings
+
+![Device Settings](static/deviceSettings.png)
+
+Giving user the ability to change between audio and video devices is a must for any Video Call Application. The relevant SDK's selectors and methods are documented [here](https://www.100ms.live/docs/javascript/v2/features/device-change).
+
+Changes done - 
+- Create two new svelte stores in hmsStore.ts - `hmsAllDevices` for list of all devices and `hmsSelectedDevices` for the selected devices
+- Install svelte-simple-modal as dev dependency(`yarn add svelte-simple-modal --dev`) for rendering device selection in a modal
+- Create a DeviceSettings.svelte component which is responsible for showing the devices in select dropdowns and handle change
+- Create a new button in Footer which can be clicked to open the Device Settings modal
+

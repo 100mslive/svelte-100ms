@@ -1,6 +1,10 @@
 <script lang="ts">
     import { hmsActions } from './hms';
     import {hmsIsAudioEnabled, hmsIsVideoEnabled} from "./hmsStores";
+    import {writable} from "svelte/store";
+    import type {Writable} from "svelte/store";
+    import Modal, {bind} from "svelte-simple-modal";
+    import DeviceSettings from "./DeviceSettings.svelte";
 
     function toggleAudio() {
         hmsActions.setLocalAudioEnabled(!$hmsIsAudioEnabled);
@@ -9,6 +13,9 @@
     function toggleVideo() {
         hmsActions.setLocalVideoEnabled(!$hmsIsVideoEnabled);
     }
+
+    const deviceModal: Writable<any> = writable(null);
+    const showDeviceModal = () => deviceModal.set(bind(DeviceSettings, {}));
 </script>
 
 <footer class="control-bar">
@@ -27,6 +34,12 @@
             Show video
         {/if}
     </button>
+
+    <button class="btn-control" on:click={showDeviceModal}>
+        Devices
+    </button>
+
+    <Modal show={$deviceModal}/>
 </footer>
 
 <style>
@@ -61,5 +74,6 @@
         border: 2px solid #37474f;
         border-radius: 50%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
     }
 </style>
