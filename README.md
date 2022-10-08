@@ -7,7 +7,7 @@ Adapting [100ms React Quickstart](https://www.100ms.live/docs/javascript/v2/guid
 To try out the demo link you can follow these steps - 
 1. Create an account on https://dashboard.100ms.live/
 2. Get an auth token for a room following [this](https://www.100ms.live/docs/javascript/v2/guides/token#getting-a-temporary-token).
-3. Go to the [Demo link](https://svelte-100ms.vercel.app/) and enter name and auth token. You can send over the link to someone else or
+3. Go to the [Demo link](https://svelte-100ms-main.vercel.app/) and enter name and auth token. You can send over the link to someone else or
   open in another tab to test the call.
 
 ## Component structure in the repo
@@ -53,3 +53,8 @@ The top level component is src/page.ts, there are two views, if the user is load
     09:55:27.108` to get a list of all devices, choose the correct device id for the camera and then run - `__hms.actions.setVideoSettings({deviceId: "<device id>"})`
 15. [Commit](https://github.com/100mslive/svelte-100ms/commit/64f8c659ea84f976043f880f11f2dcc1a994f199) - Implement Footer with audio and video toggle buttons, also add store for knowing current audio video state in hmsStores
 16. [Commit](https://github.com/100mslive/svelte-100ms/commit/56a8cfd7cf610dd56d8d2a1dcdb1b22e7e9a4e6e) - Fix a minor bug - leave button showing on join page
+
+## Next Steps 
+
+You can go through our Javascript Docs and add new features like [Chat](https://www.100ms.live/docs/javascript/v2/features/chat).
+Code examples of adding some features is also there in the [features](https://github.com/100mslive/svelte-100ms/tree/features) branch of this repo. Do check that out as well, or see the final demo [here](https://svelte-100ms.vercel.app/).
