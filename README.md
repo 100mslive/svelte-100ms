@@ -1,15 +1,23 @@
 A hello world app for Svelte + 100ms. Built with SvelteKit.
 
-Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/react-quickstart) for Svelte.
+Adapting [100ms React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/react-quickstart) for Svelte.
 
 ## Demo
 
-- Create an account on https://dashboard.100ms.live/
-- Get an auth token for a room following [this](https://www.100ms.live/docs/javascript/v2/guides/token#getting-a-temporary-token).
-- Go to the [Demo link](https://svelte-100ms.vercel.app/ and enter name auth token). You can send over the link to someone else or
+To try out the demo link you can follow these steps - 
+1.Create an account on https://dashboard.100ms.live/
+2. Get an auth token for a room following [this](https://www.100ms.live/docs/javascript/v2/guides/token#getting-a-temporary-token).
+3. Go to the [Demo link](https://svelte-100ms.vercel.app/ and enter name auth token). You can send over the link to someone else or
   open in another tab to test the call.
 
-## Steps to follow - (with commits linked for the step)
+## Component structure in the repo
+
+The top level component is src/page.ts, there are two views, if the user is loading the page, they're shown a join form page. If they're connected to the room they're shown the conference page which shows their and remote peers' videos.
+
+![Join Page](./static/joinForm.png)
+![Conference Page](./static/conference.png)
+
+## Steps to build from scratch - (with commits linked for the step)
 
 1. [Commit](https://github.com/100mslive/svelte-100ms/commit/e8d29ab266b3d9a1b92a55bcf0d2c259dc206c51) - Svelte kit create, git init
    ```sh
