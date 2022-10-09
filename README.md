@@ -4,6 +4,12 @@ Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/rea
 
 Feel free to reach out to us over [Discord](https://100ms.live/discord) for any queries.
 
+## Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F100mslive%2Fsvelte-100ms&project-name=svelte-100ms-video-call&repo-name=svelte-100ms-video-call&demo-title=Svelte%20%2B%20100ms&demo-description=A%20video%20call%20app%20built%20with%20SvelteKit%20and%20100ms&demo-url=https%3A%2F%2Fsvelte-100ms.vercel.app%2F&demo-image=https%3A%2F%2Fraw.githubusercontent.com%2F100mslive%2Fsvelte-100ms%2Fmain%2Fstatic%2Fconference.png)
+
+Use the above button to create a clone of this app in your GitHub and deploy on Vercel. You can then commit any changes in your personal repo and see them reflected in the deployment. 
+
 ## Demo
 
 To try out the demo link you can follow these steps - 
