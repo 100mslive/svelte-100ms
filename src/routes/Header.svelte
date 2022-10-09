@@ -1,6 +1,7 @@
 <script>
   import {hmsIsConnected} from "./hmsStores.ts";
   import {hmsActions} from "./hms.ts";
+  import ShareLink from "./_components/ShareLink.svelte";
 
   function leaveRoom() {
     hmsActions.leave();
@@ -19,9 +20,10 @@
 
     <div class="right">
         {#if $hmsIsConnected}
-            <button class="btn-danger leave-btn" on:click={leaveRoom}> Leave Room </button>
+            <button title="Leave" class="btn-danger leave-btn space-right" on:click={leaveRoom}> Leave Room </button>
+            <span class="space-right"><ShareLink/></span>
         {/if}
-        <a href="https://github.com/100mslive/svelte-100ms/tree/features" rel="noreferrer" target="_blank">
+        <a title="Go to GitHub" href="https://github.com/100mslive/svelte-100ms/tree/features" rel="noreferrer" target="_blank">
             <img src="github.png" alt="Github Repo">
         </a>
     </div>
@@ -40,7 +42,7 @@
         align-items: center;
     }
 
-    .leave-btn {
+    .space-right {
         margin-right: 10px;
     }
 </style>

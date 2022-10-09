@@ -1,5 +1,6 @@
 <script>
   import {hmsActions} from "./hms.ts";
+  import {tokenStore} from "./hmsStores";
 
   const userKey = "name";
   const tokenKey = "token";
@@ -19,6 +20,7 @@
     localStorage.setItem(tokenKey, token);
     try {
       joinInProgress = true;
+      tokenStore.set(token);
       await hmsActions.join({ userName: name, authToken: token, rememberDeviceSelection: true, settings });
     } catch (err) {
       console.error("Error in joining room", err);

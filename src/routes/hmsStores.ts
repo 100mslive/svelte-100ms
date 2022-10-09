@@ -1,6 +1,6 @@
 import type { HMSStore } from '@100mslive/hms-video-store';
 import type { Readable } from 'svelte/store';
-import { readable } from 'svelte/store';
+import { readable, writable } from 'svelte/store';
 import { hmsStore } from './hms';
 import {
 	selectDevices,
@@ -10,6 +10,8 @@ import {
 	selectLocalMediaSettings,
 	selectPeers
 } from '@100mslive/hms-video-store';
+
+export const tokenStore = writable();
 
 function hmsToSvelteStore<T>(selector: (store: HMSStore) => T): Readable<T> {
 	return readable(hmsStore.getState(selector), (set) => {

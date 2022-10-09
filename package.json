@@ -25,6 +25,7 @@
 		"prettier-plugin-svelte": "^2.7.0",
 		"svelte": "^3.46.0",
 		"svelte-check": "^2.7.1",
+		"svelte-feather-icons": "^4.0.0",
 		"svelte-preprocess": "^4.10.6",
 		"svelte-simple-modal": "^1.4.1",
 		"tslib": "^2.3.1",

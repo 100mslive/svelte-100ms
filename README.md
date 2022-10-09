@@ -59,9 +59,18 @@ Changes done -
 - Add logic in `Video.svelte` to monitor audio level for the peer and add border appropriately.
 
 
-## Join Improvement - Remember name and token, also take from query param
+## Join Improvement - Remember name and token, also take from query param([Commit](https://github.com/100mslive/svelte-100ms/commit/15010972fbd07e126fccbf33232fc0a3d8555780))
 
 - Remember name and token by saving them to local storage so the user doesn't have to enter them every time.
 - Add two query params, name and token so a shareable link can be made with token already embedded in. An url can be made in this form now - `baseUrl?token=<auth_token>`, to have the token prefilled.
 - Change the button text from "Join" to "Joining..." when join is in progress.
 
+## Add Share/Copy link button
+
+The purpose of share link button is to get a sharable link(copied to clipboard) which can be sent to others for joining the same call.
+
+![Share Button](static/shareButton.png)
+
+- Install feather icons - `yarn add --dev svelte-feather-icons`
+- Create a writable tokenStore to hold the auth token which will be used to create the sharable url. This is created in `hmsStores.ts`.
+- Create a new `ShareLink` component to copy the url and put it in Header component
