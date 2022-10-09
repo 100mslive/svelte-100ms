@@ -65,7 +65,7 @@ Changes done -
 - Add two query params, name and token so a shareable link can be made with token already embedded in. An url can be made in this form now - `baseUrl?token=<auth_token>`, to have the token prefilled.
 - Change the button text from "Join" to "Joining..." when join is in progress.
 
-## Add Share/Copy link button
+## Add Share/Copy link button([Commit](https://github.com/100mslive/svelte-100ms/commit/1accff7dda439b2fc3e810c017f83c522baa7889))
 
 The purpose of share link button is to get a sharable link(copied to clipboard) which can be sent to others for joining the same call.
 
@@ -74,3 +74,7 @@ The purpose of share link button is to get a sharable link(copied to clipboard) 
 - Install feather icons - `yarn add --dev svelte-feather-icons`
 - Create a writable tokenStore to hold the auth token which will be used to create the sharable url. This is created in `hmsStores.ts`.
 - Create a new `ShareLink` component to copy the url and put it in Header component
+
+## Use Icons in Footer
+
+- Use Feather icons for audio, video and device settings

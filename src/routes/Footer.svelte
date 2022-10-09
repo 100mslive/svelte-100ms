@@ -5,6 +5,7 @@
     import type {Writable} from "svelte/store";
     import Modal, {bind} from "svelte-simple-modal";
     import DeviceSettings from "./DeviceSettings.svelte";
+    import {MicIcon, MicOffIcon, VideoIcon, VideoOffIcon, SettingsIcon} from "svelte-feather-icons";
 
     function toggleAudio() {
         hmsActions.setLocalAudioEnabled(!$hmsIsAudioEnabled);
@@ -21,22 +22,22 @@
 <footer class="control-bar">
     <button class="btn-control" on:click={toggleAudio}>
         {#if $hmsIsAudioEnabled}
-            Mute
+            <MicIcon/>
         {:else}
-            Unmute
+            <MicOffIcon/>
         {/if}
     </button>
 
     <button class="btn-control" on:click={toggleVideo}>
         {#if $hmsIsVideoEnabled}
-            Stop Video
+            <VideoIcon/>
         {:else}
-            Show video
+            <VideoOffIcon/>
         {/if}
     </button>
 
     <button class="btn-control" on:click={showDeviceModal}>
-        Devices
+        <SettingsIcon/>
     </button>
 
     <Modal show={$deviceModal} styleWindow={{ background: 'rgb(44,56,63)', color: 'white' }} closeButton={false}/>
