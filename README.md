@@ -17,7 +17,7 @@ Feel free to reach out to us over [Discord](https://100ms.live/discord).
 
 # Features
 
-These are present in the order they were added in the repo to follow through easily.
+These are present in the order they were added in the repo to follow through easily. Note that sometimes minor bugs in a feature are fixed in subsequent commits, so in case you're picking up from any single component, do check out the latest state of the corresponding file in the branch.
 
 ## Device Settings([Commit1](https://github.com/100mslive/svelte-100ms/commit/936ff04f6a4631b981f802211bf53ff314695c44), [Commit2](https://github.com/100mslive/svelte-100ms/commit/183b24b820c70f3987c28581104ed516b3ca7fcc))
 
@@ -32,7 +32,7 @@ Changes done -
 - Create a new button in Footer which can be clicked to open the Device Settings modal
 - Add some css to Device Settings to make it look consistent
 
-## Avatar when video is muted or degraded([Commit](https://github.com/100mslive/svelte-100ms/commit/f799bbb86f763297cf0ac424566f0289b1f8237a))
+## Avatar when video is muted or degraded([Commit1](https://github.com/100mslive/svelte-100ms/commit/f799bbb86f763297cf0ac424566f0289b1f8237a), [Commit2](https://github.com/100mslive/svelte-100ms/commit/b9dc19904be80530b1fec95995c990a68dcea17d))
 
 Right now when the video is muted, we're showing blank page, let's change this to show a nice looking Avatar based on name.
 
@@ -73,8 +73,20 @@ The purpose of share link button is to get a sharable link(copied to clipboard) 
 
 - Install feather icons - `yarn add --dev svelte-feather-icons`
 - Create a writable tokenStore to hold the auth token which will be used to create the sharable url. This is created in `hmsStores.ts`.
-- Create a new `ShareLink` component to copy the url and put it in Header component
+- Create a new [`ShareLink`](./src/routes/_components/ShareLink.svelte) component to copy the url and put it in Header component
 
-## Use Icons in Footer
+## Use Icons in Footer([Commit](https://github.com/100mslive/svelte-100ms/commit/e9b165accc58b04d3a1ef4397a82dc9ac3445a1c))
 
 - Use Feather icons for audio, video and device settings
+
+## Network Quality
+
+Ever had those "I wonder whose internet is bad" moment in a Video call. The SDK gives the connection score of everyone in the room for moments like these, as documented [here](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality). Let's build it out in the UI.
+
+![Network Quality](static/networkQuality.png)
+
+- Create a new [`ConnectionQuality.svelte`](./src/routes/_components/ConnectionQuality.svelte) component which takes in a peer id and renders the network quality score for the peer in form of Wi-Fi signal. It does by using SVG images, there is one svg image for when connection score is 0(disconnected), and a set of arcs resembling the Wi-Fi signal colored per the score for connection score > 0. 
+- Add the new component in `Peer.svelte` to show on the tile on bottom left.
+
+> To know more about what different connection scores represent check out the [docs](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality#score-interpretation)
+

@@ -5,6 +5,7 @@
     import type {HMSVideoTrack} from "@100mslive/hms-video-store";
     import {selectCameraStreamByPeerID} from "@100mslive/hms-video-store";
     import {onDestroy} from "svelte";
+    import ConnectionQuality from "./_components/ConnectionQuality.svelte";
 
     export let peer;
 
@@ -28,6 +29,9 @@
     <div class="peer-name">
         {peer.name} {peer.isLocal ? "(You)" : ""}
     </div>
+    <div class="network-score">
+        <ConnectionQuality peerId={peer.id}/>
+    </div>
 </div>
 
 <style>
@@ -35,7 +39,7 @@
         font-size: 14px;
         text-align: center;
         position: absolute;
-        bottom: 5px;
+        bottom: 0.25rem;
         left: 50%;
         transform: translateX(-50%);
         width: 80%;
@@ -64,5 +68,11 @@
         transform: translateX(-50%) translateY(-50%);
         width: 100%;
         height: 100%;
+    }
+
+    .network-score {
+        position: absolute;
+        bottom: 0.25rem;
+        left: 0.25rem;
     }
 </style>
