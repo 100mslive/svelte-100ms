@@ -8,6 +8,8 @@
 
     let videoElement;
 
+    // video Element will be available only after mount, the result of subscribe function is an unsubscribe function.
+    // It's returned as is so unsubscription can happen on unmount
     onMount(() => {
       return hmsStore.subscribe((track) => {
         if (!track || !videoElement) {
@@ -33,16 +35,13 @@
 
 <style>
     .peer-video {
-        height: 250px;
-        width: 250px;
-
-        margin-bottom: 10px;
-
-        border-radius: 40%;
-
+        height: 100%;
+        width: 100%;
+        border-radius: 0.25rem;
         object-fit: cover;
     }
 
+    /*mirror the video for local peer*/
     .peer-video.local {
         transform: scaleX(-1);
     }
