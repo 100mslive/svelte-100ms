@@ -9,15 +9,22 @@
 
 
 <header>
-    <img
-            class="logo"
-            src="https://www.100ms.live/assets/logo.svg"
-            alt="100ms Logo"
-    />
+    <a href="https://100ms.live/" rel="noreferrer" target="_blank">
+        <img
+                class="logo"
+                src="https://www.100ms.live/assets/logo.svg"
+                alt="100ms Logo"
+        />
+    </a>
 
-    {#if $hmsIsConnected}
-        <button id="leave-btn" class="btn-danger" on:click={leaveRoom}> Leave Room </button>
-    {/if}
+    <div class="right">
+        {#if $hmsIsConnected}
+            <button class="btn-danger leave-btn" on:click={leaveRoom}> Leave Room </button>
+        {/if}
+        <a href="https://github.com/100mslive/svelte-100ms/tree/features" rel="noreferrer" target="_blank">
+            <img src="github.png" alt="Github Repo">
+        </a>
+    </div>
 </header>
 
 <style>
@@ -26,5 +33,14 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    .right {
+        display: flex;
+        align-items: center;
+    }
+
+    .leave-btn {
+        margin-right: 10px;
     }
 </style>
