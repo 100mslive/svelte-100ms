@@ -7,6 +7,7 @@
     const changeSpeaker = (e) => hmsActions.setAudioOutputDevice(e.target.value);
 </script>
 
+<div class = "device-settings">
 <h1>Device Settings</h1>
 <div class="selection">
     <h2>Video</h2>
@@ -26,6 +27,7 @@
         {#each $hmsAllDevices.audioOutput as value (value.deviceId)}<option value={value.deviceId}>{value.label}</option>{/each}
     </select>
 </div>
+</div>
 
 
 <style>
@@ -42,5 +44,10 @@
 
     select {
         width: 80%;
+        background: rgb(60, 76, 86);
+        color: white;
+        outline: none;
+        border: none;
+        font-size: inherit;
     }
 </style>

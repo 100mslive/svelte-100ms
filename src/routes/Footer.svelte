@@ -39,7 +39,7 @@
         Devices
     </button>
 
-    <Modal show={$deviceModal}/>
+    <Modal show={$deviceModal} styleWindow={{ background: 'rgb(44,56,63)', color: 'white' }} closeButton={false}/>
 </footer>
 
 <style>
