@@ -50,5 +50,5 @@ It's helpful to show the audio level in a video call to know who is speaking at 
 
 ![Audio Level](static/audioLevel.png)
 
-Changes done - 
+Changes done([Commit](https://github.com/100mslive/svelte-100ms/commit/d669a10532a5c13d27a4b6160494337067ab1819)) - 
 - Add logic in `Video.svelte` to monitor audio level for the peer and add border appropriately.
