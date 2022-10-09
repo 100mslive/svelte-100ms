@@ -44,3 +44,11 @@ Changes done([Commit](https://github.com/100mslive/svelte-100ms/commit/f799bbb86
 > An important point to note here is that Video component should always be part of the dom. That is a code like this - `if (condition) {Avatar} else {Video}` is not correct(though it will work). Avatar needs to be present as an overlay on top of the Video component, than there being a conditional render between Avatar and Video. This is to avoid video element being frequently recreated as well as for the sdk to be aware of the UI's intention to show video in case of degradation.
 
 
+## Audio Level
+
+It's helpful to show the audio level in a video call to know who is speaking at the moment. Let's implement this following the docs [here](https://www.100ms.live/docs/javascript/v2/advanced-features/audio-level). The way we'll show it is by creating a box-shadow around the video element of the peer who is speaking.
+
+![Audio Level](static/audioLevel.png)
+
+Changes done - 
+- Add logic in `Video.svelte` to monitor audio level for the peer and add border appropriately.
