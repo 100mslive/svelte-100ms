@@ -1,11 +1,30 @@
 <script>
   import {hmsActions} from "./hms.ts";
 
-  let name = '';
-  let token = '';
+  const userKey = "name";
+  const tokenKey = "token";
+  const urlParams = new URLSearchParams(window.location.search);
 
-  function join() {
-    hmsActions.join({ userName: name, authToken: token, rememberDeviceSelection: true });
+  // support for query params to directly populate the name and auth token values
+  let name = urlParams.get(userKey) || localStorage.getItem(userKey) || "";
+  let token = urlParams.get(tokenKey) || localStorage.getItem(tokenKey) || "";
+
+  const joinAsMuted = false;
+  const settings = joinAsMuted ? {isAudioMuted: true, isVideoMuted: true} : {};
+
+  let joinInProgress = false;
+  async function join() {
+    // set the values in localstorage to avoid taking in every time
+    localStorage.setItem(userKey, name);
+    localStorage.setItem(tokenKey, token);
+    try {
+      joinInProgress = true;
+      await hmsActions.join({ userName: name, authToken: token, rememberDeviceSelection: true, settings });
+    } catch (err) {
+      console.error("Error in joining room", err);
+    } finally {
+      joinInProgress = false;
+    }
   }
 </script>
 
@@ -25,7 +44,7 @@
                 placeholder="App token for a room"
         />
 
-    <button type="submit" class="btn-primary">Join</button>
+    <button type="submit" class="btn-primary join-btn">{joinInProgress ? "Joining..." : "Join"}</button>
 </form>
 
 <style>
@@ -65,5 +84,9 @@
 
     form h2 {
         margin-bottom: 20px;
+    }
+
+    .join-btn {
+        cursor: pointer;
     }
 </style>

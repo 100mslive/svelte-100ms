@@ -52,3 +52,11 @@ It's helpful to show the audio level in a video call to know who is speaking at 
 
 Changes done - 
 - Add logic in `Video.svelte` to monitor audio level for the peer and add border appropriately.
+
+
+## Join Improvement - Remember name and token, also take from query param
+
+- Remember name and token by saving them to local storage so the user doesn't have to enter them every time.
+- Add two query params, name and token so a shareable link can be made with token already embedded in. An url can be made in this form now - `baseUrl?token=<auth_token>`, to have the token prefilled.
+- Change the button text from "Join" to "Joining..." when join is in progress.
+
