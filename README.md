@@ -79,9 +79,9 @@ The purpose of share link button is to get a sharable link(copied to clipboard) 
 
 - Use Feather icons for audio, video and device settings
 
-## Network Quality
+## Network Quality([Commit](https://github.com/100mslive/svelte-100ms/commit/6796c79e61d7fe14c4689790337c00b69cb61209))
 
-Ever had those "I wonder whose internet is bad" moment in a Video call. The SDK gives the connection score of everyone in the room for moments like these, as documented [here](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality). Let's build it out in the UI.
+Ever had those "I wonder whose internet is bad" moment in a Video call. The SDK gives the connection score of everyone in the room for times like these, as documented [here](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality). Let's build it out in the UI.
 
 ![Network Quality](static/networkQuality.png)
 
