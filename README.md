@@ -14,20 +14,20 @@ Feel free to reach out to us over [Discord](https://100ms.live/discord).
 
 These are present in the order they were added in the repo to follow through easily.
 
-## Device Settings
+## Device Settings([Commit1](https://github.com/100mslive/svelte-100ms/commit/936ff04f6a4631b981f802211bf53ff314695c44), [Commit2](https://github.com/100mslive/svelte-100ms/commit/183b24b820c70f3987c28581104ed516b3ca7fcc))
 
 Giving user the ability to change between audio and video devices is a must for any Video Call Application. The relevant SDK's selectors and methods are documented [here](https://www.100ms.live/docs/javascript/v2/features/device-change).
 
 ![Device Settings](static/deviceSettings.png)
 
-Changes done([Commit1](https://github.com/100mslive/svelte-100ms/commit/936ff04f6a4631b981f802211bf53ff314695c44), [Commit2](https://github.com/100mslive/svelte-100ms/commit/183b24b820c70f3987c28581104ed516b3ca7fcc)) - 
+Changes done - 
 - Create two new svelte stores in hmsStore.ts - `hmsAllDevices` for list of all devices and `hmsSelectedDevices` for the selected devices
 - Install svelte-simple-modal as dev dependency(`yarn add svelte-simple-modal --dev`) for rendering device selection in a modal
 - Create a [`DeviceSettings.svelte`](./src/routes/DeviceSettings.svelte) component which is responsible for showing the devices in select dropdowns and handle change
 - Create a new button in Footer which can be clicked to open the Device Settings modal
 - Add some css to Device Settings to make it look consistent
 
-## Avatar when video is muted or degraded
+## Avatar when video is muted or degraded([Commit](https://github.com/100mslive/svelte-100ms/commit/f799bbb86f763297cf0ac424566f0289b1f8237a))
 
 Right now when the video is muted, we're showing blank page, let's change this to show a nice looking Avatar based on name.
 
@@ -35,7 +35,7 @@ Right now when the video is muted, we're showing blank page, let's change this t
 
 ![Avatars](static/avatars.png)
 
-Changes done([Commit](https://github.com/100mslive/svelte-100ms/commit/f799bbb86f763297cf0ac424566f0289b1f8237a)) -
+Changes done -
 - Create a `_components` folder in routes, to store components. The folder is prefixed with `_` so it's not counted in routes.
 - Create an [`Avatar.svelte`](./src/routes/_components/Avatar.svelte) component. It takes name as an input, picks a color based on first letter and shows the initials of the name over the chosen color.
 - Remove margin from the Video component and make it take full width/height of parent. This is to give the control to Peer component.
@@ -44,11 +44,11 @@ Changes done([Commit](https://github.com/100mslive/svelte-100ms/commit/f799bbb86
 > An important point to note here is that Video component should always be part of the dom. That is a code like this - `if (condition) {Avatar} else {Video}` is not correct(though it will work). Avatar needs to be present as an overlay on top of the Video component, than there being a conditional render between Avatar and Video. This is to avoid video element being frequently recreated as well as for the sdk to be aware of the UI's intention to show video in case of degradation.
 
 
-## Audio Level
+## Audio Level([Commit](https://github.com/100mslive/svelte-100ms/commit/d669a10532a5c13d27a4b6160494337067ab1819))
 
 It's helpful to show the audio level in a video call to know who is speaking at the moment. Let's implement this following the docs [here](https://www.100ms.live/docs/javascript/v2/advanced-features/audio-level). The way we'll show it is by creating a box-shadow around the video element of the peer who is speaking.
 
 ![Audio Level](static/audioLevel.png)
 
-Changes done([Commit](https://github.com/100mslive/svelte-100ms/commit/d669a10532a5c13d27a4b6160494337067ab1819)) - 
+Changes done - 
 - Add logic in `Video.svelte` to monitor audio level for the peer and add border appropriately.
