@@ -35,7 +35,7 @@ Right now when the video is muted, we're showing blank page, let's change this t
 
 ![Avatars](static/avatars.png)
 
-Changes done
+Changes done([Commit](https://github.com/100mslive/svelte-100ms/commit/f799bbb86f763297cf0ac424566f0289b1f8237a)) -
 - Create a `_components` folder in routes, to store components. The folder is prefixed with `_` so it's not counted in routes.
 - Create an [`Avatar.svelte`](./src/routes/_components/Avatar.svelte) component. It takes name as an input, picks a color based on first letter and shows the initials of the name over the chosen color.
 - Remove margin from the Video component and make it take full width/height of parent. This is to give the control to Peer component.
