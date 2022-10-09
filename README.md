@@ -1,6 +1,8 @@
-A hello world app for Svelte + 100ms. Built with SvelteKit.
+A Video Call app built with SvelteKit, using 100ms' SDK for the conferencing part.
 
-Adapting [100ms React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/react-quickstart) for Svelte.
+Adapting [React Quickstart](https://www.100ms.live/docs/javascript/v2/guides/react-quickstart) for Svelte. And then building a ton of features on top - checkout the [features branch](https://github.com/100mslive/svelte-100ms/tree/features) for these.
+
+Feel free to reach out to us over [Discord](https://100ms.live/discord) for any queries.
 
 ## Demo
 
@@ -9,6 +11,10 @@ To try out the demo link you can follow these steps -
 2. Get an auth token for a room following [this](https://www.100ms.live/docs/javascript/v2/guides/token#getting-a-temporary-token).
 3. Go to the [Demo link](https://svelte-100ms-main.vercel.app/) and enter name and auth token. You can send over the link to someone else or
   open in another tab to test the call.
+  
+> Note: There are two demo links - 
+> - https://svelte-100ms-main.vercel.app - for this branch(main) - basic Video Call, join, mute/unmute and see others in the room
+> - https://svelte-100ms.vercel.app - for the [features branch](https://github.com/100mslive/svelte-100ms/tree/features), more details in the branch's README
 
 ## Component structure in the repo
 
@@ -56,5 +62,4 @@ The top level component is src/page.ts, there are two views, if the user is load
 
 ## Next Steps 
 
-You can go through our Javascript Docs and add new features like [Chat](https://www.100ms.live/docs/javascript/v2/features/chat).
-Code examples of adding some features is also there in the [features](https://github.com/100mslive/svelte-100ms/tree/features) branch of this repo. Do check that out as well, or see the final demo [here](https://svelte-100ms.vercel.app/).
+Continue over to the [features](https://github.com/100mslive/svelte-100ms/tree/features) branch which builds upon the things we learnt here.
