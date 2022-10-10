@@ -90,3 +90,24 @@ Ever had those "I wonder whose internet is bad" moment in a Video call. The SDK 
 
 > To know more about what different connection scores represent check out the [docs](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality#score-interpretation)
 
+## Notifications
+
+Notifications can be used to show toast messages for events happening in the room, like a peer joining, receiving a message, device change, errors, reconnections, disconnections etc.
+
+Examples - 
+
+![Peer Join](static/toastPeerJoin.png)
+![Permissions Error](static/toastPermissions.png)
+![Disconnected](static/toastConnectionLost.png)
+![Reconnecting](static/toastReconnecting.png)
+![Reconnected](static/toastReconnected.png)
+
+- Install a toast library - `yarn add @zerodevx/svelte-toast --dev`
+- Write a wrapper over the toast library in [`toasts.ts`](./src/routes/_components/toasts.ts), styles added globally in `styles.css`
+- Create a new component - `Notifications.svelte` responsible for displaying toasts, rendering the SvelteToast component
+- Render Notifications component first thing in the page component
+- Listen to the notifications from SDK using `hmsNotifications` and show appropriate toasts per the documentation [here](https://www.100ms.live/docs/javascript/v2/features/notifications) and [here](https://www.100ms.live/docs/javascript/v2/features/error-handling).
+- For reconnection notification, we'll also build a special type of toast which can be updated in place. So the reconnecting notification itself is changed to connected once reconnection is successful.
+- Also remove any existing toasts whenever join button is clicked in `JoinForm.svelte`.
+
+> The device permissions error is the most common errors seen in production use. It can be very useful to tell user more about giving device permissions in case of such errors.

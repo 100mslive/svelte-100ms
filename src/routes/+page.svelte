@@ -1,5 +1,6 @@
 <script>
   import './styles.css';
+  import Notifications from "./_components/Notifications.svelte";
   import {hmsActions} from "./hms.ts";
   import Conference from "./Conference.svelte";
   import JoinForm from "./JoinForm.svelte";
@@ -10,7 +11,6 @@
   function leaveRoom() {
     hmsActions.leave();
   }
-
 </script>
 
 <!-- leave room on tab close -->
@@ -21,6 +21,7 @@
     <meta name="description" content="Svelte HMS World" />
 </svelte:head>
 
+<Notifications/>
 <Header/>
 {#if $hmsIsConnected}
     <Conference />

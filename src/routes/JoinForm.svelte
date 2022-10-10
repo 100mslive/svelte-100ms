@@ -1,6 +1,7 @@
 <script>
   import {hmsActions} from "./hms.ts";
   import {tokenStore} from "./hmsStores";
+  import {toast} from "./_components/toasts";
 
   const userKey = "name";
   const tokenKey = "token";
@@ -21,9 +22,11 @@
     try {
       joinInProgress = true;
       tokenStore.set(token);
+      toast.removeAll(); // it's a new start
       await hmsActions.join({ userName: name, authToken: token, rememberDeviceSelection: true, settings });
     } catch (err) {
       console.error("Error in joining room", err);
+      toast.terminal(`Can't join => ${err.message}: ${err.description}`);
     } finally {
       joinInProgress = false;
     }

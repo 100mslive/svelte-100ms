@@ -48,3 +48,31 @@ h5 {
 
 	cursor: pointer;
 }
+
+:root {
+	--toastContainerTop: auto;
+	--toastContainerRight: auto;
+	--toastContainerBottom: 3rem;
+	--toastContainerLeft: 3rem;
+	--toastWidth: 20rem;
+}
+
+.toast-default {
+	--toastBackground: #61758f;
+	--toastBarBackground: #4a5d6e;
+}
+
+.toast-green {
+	--toastBackground: #36B37E;
+	--toastBarBackground: #2F855A;
+}
+
+.toast-yellow {
+	--toastBackground: #FFAB00;
+	--toastBarBackground: #b67b02;
+}
+
+.toast-red {
+	--toastBackground: #CC525F;
+	--toastBarBackground: #a6434e;
+}
