@@ -132,7 +132,7 @@ Let's display the audio mute state on the peer tile. [SDK Docs](https://www.100m
 - Show either of Mic or MicOff icon based on audio state in Peer component.
 
 
-## Chat Messages
+## Chat Messages([Commit](https://github.com/100mslive/svelte-100ms/commit/de186ef6c517d95334031e18b2d02cc45683f8fb))
 
 A video call app isn't complete without the ability to send messages in the room. Let's build the chat component with the help of the API documented in [SDK Docs](https://www.100ms.live/docs/javascript/v2/features/chat).
 
@@ -142,3 +142,4 @@ A video call app isn't complete without the ability to send messages in the room
 - Create a [`Chat.svelte`](./src/routes/_components/Chat.svelte) component. This displays all the chat messages and has an input box to send message which will be broadcasted to everyone else in the room. Building this component out is the most difficult part of this task. Too much fancy CSS to get things working. Couldn't find a composable Svelte or Vanilla JS Chat UI component library. Another cool thing added to the chat component is to auto scroll when new messages come.
 - Add a button in Footer to toggle chat and show the chat component when it's toggled to true.
 - Also change the footer buttons to square instead of circle, square looks better.
+- Send a toast when new message is received

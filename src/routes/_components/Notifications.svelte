@@ -1,17 +1,18 @@
 <script lang="ts">
-		import { SvelteToast } from '@zerodevx/svelte-toast';
-		import Modal, { bind } from 'svelte-simple-modal';
-		import { hmsNotifications } from '../hms.js';
-		import type { HMSException } from '@100mslive/hms-video-store';
-		import { HMSNotificationTypes } from '@100mslive/hms-video-store';
-		import { toast } from './toasts';
-		import { onDestroy } from 'svelte';
-		import type { SvelteComponent } from 'svelte';
-		import { writable } from 'svelte/store';
-		import type { Writable } from 'svelte/store';
-		import AutoPlayError from './AutoPlayError.svelte';
+	import { SvelteToast } from '@zerodevx/svelte-toast';
+	import Modal, { bind } from 'svelte-simple-modal';
+	import { hmsNotifications } from '../hms.js';
+	import type { HMSException } from '@100mslive/hms-video-store';
+	import { HMSNotificationTypes } from '@100mslive/hms-video-store';
+	import { toast } from './toasts';
+	import type { SvelteComponent } from 'svelte';
+	import { onDestroy } from 'svelte';
+	import type { Writable } from 'svelte/store';
+	import { writable } from 'svelte/store';
+	import AutoPlayError from './AutoPlayError.svelte';
+	import { isChatOpen } from '../hmsStores';
 
-		const defaultOptions = {reversed: true, duration: 3000};
+	const defaultOptions = {reversed: true, duration: 3000};
 		const unClosableModal: Writable<SvelteComponent> = writable(null);
 		const closeUnClosableModal = () => unClosableModal.set(null); // I do see the irony!
 
@@ -50,6 +51,13 @@
 					break;
 				case HMSNotificationTypes.RECONNECTED:
 					toast.changeable('reconnection', 'success', 'You are now connected');
+					break;
+				case HMSNotificationTypes.NEW_MESSAGE:
+					if (!$isChatOpen) {
+						const data = notification.data;
+						const toastStr = `<strong>Message from ${data.senderName}:</strong><br>${data.message}`
+						toast.info(toastStr);
+					}
 					break;
 			}
 		})
