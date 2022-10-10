@@ -123,10 +123,22 @@ Most browsers have a restriction on audio autoplay where audio is allowed only i
 - Add an else if block in the Notifications component for autoplay error(code = 3008) and open the AutoPlayError component in a modal when it happens.
 
 
-## Muted State on Peer Tile
+## Muted State on Peer Tile([Commit](https://github.com/100mslive/svelte-100ms/commit/1f35bfde4667f2483226308a03e35bd50e01baf4))s
 
 Let's display the audio mute state on the peer tile. [SDK Docs](https://www.100ms.live/docs/javascript/v2/guides/useful-selectors#how-do-i-know-the-status-of-remote-mic-video-status).
 
 ![Remote Muted State](static/remoteMuteState.png)
 
 - Show either of Mic or MicOff icon based on audio state in Peer component.
+
+
+## Chat Messages
+
+A video call app isn't complete without the ability to send messages in the room. Let's build the chat component with the help of the API documented in [SDK Docs](https://www.100ms.live/docs/javascript/v2/features/chat).
+
+![Chat](static/chat.png)
+
+- Create two new stores in hmsStores, one which has all the messages and a new writable store to store whether chat is currently open.
+- Create a [`Chat.svelte`](./src/routes/_components/Chat.svelte) component. This displays all the chat messages and has an input box to send message which will be broadcasted to everyone else in the room. Building this component out is the most difficult part of this task. Too much fancy CSS to get things working. Couldn't find a composable Svelte or Vanilla JS Chat UI component library. Another cool thing added to the chat component is to auto scroll when new messages come.
+- Add a button in Footer to toggle chat and show the chat component when it's toggled to true.
+- Also change the footer buttons to square instead of circle, square looks better.

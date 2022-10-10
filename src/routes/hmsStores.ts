@@ -4,6 +4,7 @@ import { readable, writable } from 'svelte/store';
 import { hmsStore } from './hms';
 import {
 	selectDevices,
+	selectHMSMessages,
 	selectIsConnectedToRoom,
 	selectIsLocalAudioEnabled,
 	selectIsLocalVideoEnabled,
@@ -23,7 +24,11 @@ export const hmsIsConnected = hmsToSvelteStore(selectIsConnectedToRoom);
 export const hmsPeers = hmsToSvelteStore(selectPeers);
 export const hmsIsAudioEnabled = hmsToSvelteStore(selectIsLocalAudioEnabled);
 export const hmsIsVideoEnabled = hmsToSvelteStore(selectIsLocalVideoEnabled);
+export const hmsMessages = hmsToSvelteStore(selectHMSMessages);
 
 // For knowing list of audio and video devices as well as the currently selected ones
 export const hmsAllDevices = hmsToSvelteStore(selectDevices);
 export const hmsSelectedDevices = hmsToSvelteStore(selectLocalMediaSettings);
+
+// UI things
+export const isChatOpen = writable(true);
