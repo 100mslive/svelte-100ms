@@ -31,4 +31,4 @@ export const hmsAllDevices = hmsToSvelteStore(selectDevices);
 export const hmsSelectedDevices = hmsToSvelteStore(selectLocalMediaSettings);
 
 // UI things
-export const isChatOpen = writable(true);
+export const isChatOpen = writable(false);

@@ -77,6 +77,8 @@ The purpose of share link button is to get a sharable link(copied to clipboard) 
 
 ## Use Icons in Footer([Commit](https://github.com/100mslive/svelte-100ms/commit/e9b165accc58b04d3a1ef4397a82dc9ac3445a1c))
 
+![Footer Icons](static/footerIcons.png)
+
 - Use Feather icons for audio, video and device settings
 
 ## Network Quality([Commit](https://github.com/100mslive/svelte-100ms/commit/6796c79e61d7fe14c4689790337c00b69cb61209))
@@ -142,4 +144,4 @@ A video call app isn't complete without the ability to send messages in the room
 - Create a [`Chat.svelte`](./src/routes/_components/Chat.svelte) component. This displays all the chat messages and has an input box to send message which will be broadcasted to everyone else in the room. Building this component out is the most difficult part of this task. Too much fancy CSS to get things working. Couldn't find a composable Svelte or Vanilla JS Chat UI component library. Another cool thing added to the chat component is to auto scroll when new messages come.
 - Add a button in Footer to toggle chat and show the chat component when it's toggled to true.
 - Also change the footer buttons to square instead of circle, square looks better.
-- Send a toast when new message is received
+- Send a toast when new message is received([Commit](https://github.com/100mslive/svelte-100ms/commit/0176eabbb7cb2c9e09f61bb84db6ab361b107362))
