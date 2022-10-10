@@ -1,12 +1,19 @@
 <script lang="ts">
 		import { SvelteToast } from '@zerodevx/svelte-toast';
+		import Modal, { bind } from 'svelte-simple-modal';
 		import { hmsNotifications } from '../hms.js';
 		import type { HMSException } from '@100mslive/hms-video-store';
 		import { HMSNotificationTypes } from '@100mslive/hms-video-store';
 		import { toast } from './toasts';
 		import { onDestroy } from 'svelte';
+		import type { SvelteComponent } from 'svelte';
+		import { writable } from 'svelte/store';
+		import type { Writable } from 'svelte/store';
+		import AutoPlayError from './AutoPlayError.svelte';
 
 		const defaultOptions = {reversed: true, duration: 3000};
+		const unClosableModal: Writable<SvelteComponent> = writable(null);
+		const closeUnClosableModal = () => unClosableModal.set(null); // I do see the irony!
 
 		const unsub = hmsNotifications.onNotification((notification) => {
 			switch (notification.type) {
@@ -25,12 +32,14 @@
 					console.log("error received ", error);
 					if (error.isTerminal) {
 						toast.terminal(`Error, you're disconnected: ${error.message}: ${error.description}`);
-					} else if ([3001, 3011].includes(code)) {
+					} else if ([3001, 3011].includes(code)) { // device permission error
 						const isSystemError = code === 3011;
 						const action = isSystemError
 							? "Please enable permissions from system settings"
 							: "Please enable permissions from the address bar or browser settings";
 						toast.error(`${error.message} => ${action}`, false);
+					} else if (code === 3008) { // autoplay error
+						unClosableModal.set(bind(AutoPlayError, {onClose: closeUnClosableModal}));
 					} else {
 						toast.error(`Error: ${error.message}: ${error.description}`);
 					}
@@ -49,3 +58,5 @@
 </script>
 
 <SvelteToast options={defaultOptions}/>
+<Modal styleWindow={{ background: 'rgb(44,56,63)', color: 'white' }}
+			 show={$unClosableModal} closeButton={false} closeOnEsc={false} closeOnOuterClick={false}/>

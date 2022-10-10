@@ -32,6 +32,8 @@ h5 {
 	font-family: inherit;
 	font-size: 14px;
 	color: white;
+
+	cursor: pointer;
 }
 
 .btn-danger {

@@ -3,9 +3,10 @@
     import {hmsIsAudioEnabled, hmsIsVideoEnabled} from "./hmsStores";
     import {writable} from "svelte/store";
     import type {Writable} from "svelte/store";
-    import Modal, {bind} from "svelte-simple-modal";
+    import Modal from "svelte-simple-modal";
     import DeviceSettings from "./DeviceSettings.svelte";
     import {MicIcon, MicOffIcon, VideoIcon, VideoOffIcon, SettingsIcon} from "svelte-feather-icons";
+    import { SvelteComponent } from 'svelte';
 
     function toggleAudio() {
         hmsActions.setLocalAudioEnabled(!$hmsIsAudioEnabled);
@@ -15,8 +16,8 @@
         hmsActions.setLocalVideoEnabled(!$hmsIsVideoEnabled);
     }
 
-    const deviceModal: Writable<any> = writable(null);
-    const showDeviceModal = () => deviceModal.set(bind(DeviceSettings, {}));
+    const deviceModal: Writable<SvelteComponent> = writable(null);
+    const showDeviceModal = () => deviceModal.set(DeviceSettings);
 </script>
 
 <footer class="control-bar">

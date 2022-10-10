@@ -90,7 +90,7 @@ Ever had those "I wonder whose internet is bad" moment in a Video call. The SDK 
 
 > To know more about what different connection scores represent check out the [docs](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality#score-interpretation)
 
-## Notifications
+## Notifications([Commit](https://github.com/100mslive/svelte-100ms/commit/6deb8ef704e61ec52870da1a9122dbdbe1c2f456))
 
 Notifications can be used to show toast messages for events happening in the room, like a peer joining, receiving a message, device change, errors, reconnections, disconnections etc.
 
@@ -111,3 +111,14 @@ Examples -
 - Also remove any existing toasts whenever join button is clicked in `JoinForm.svelte`.
 
 > The device permissions error is the most common errors seen in production use. It can be very useful to tell user more about giving device permissions in case of such errors.
+
+
+## Autoplay Error
+
+Most browsers have a restriction on audio autoplay where audio is allowed only if the user has interacted with the page. This is very important error to handle as when this happens you user won't be able to hear others in the room. [Docs](https://www.100ms.live/docs/javascript/v2/features/error-handling#handling-autoplay-error).
+
+![Autoplay Error](static/autoplayError.png)
+
+- Create an [`AutoPlayError.svelte`](./src/routes/_components/AutoPlayError.svelte) component responsible for letting the user know about the issue and giving an actionable button to resume audio which will call the SDK function.
+- Add an else if block in the Notifications component for autoplay error(code = 3008) and open the AutoPlayError component in a modal when it happens.
+
