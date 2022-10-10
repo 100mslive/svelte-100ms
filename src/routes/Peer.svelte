@@ -3,19 +3,25 @@
     import Video from "./Video.svelte";
     import {hmsStore} from "./hms.js";
     import type {HMSVideoTrack} from "@100mslive/hms-video-store";
-    import {selectCameraStreamByPeerID} from "@100mslive/hms-video-store";
+    import { selectCameraStreamByPeerID, selectIsPeerAudioEnabled } from '@100mslive/hms-video-store';
     import {onDestroy} from "svelte";
     import ConnectionQuality from "./_components/ConnectionQuality.svelte";
+    import { MicOffIcon, MicIcon } from 'svelte-feather-icons';
 
     export let peer;
 
     let videoTrack: HMSVideoTrack | undefined;
+    let isAudioEnabled: boolean = false;
 
-    const unsub = hmsStore.subscribe((track: HMSVideoTrack | undefined) => {
+    const unsub1 = hmsStore.subscribe((track: HMSVideoTrack | undefined) => {
       videoTrack = track;
     }, selectCameraStreamByPeerID(peer.id));
 
-    onDestroy(unsub);
+    const unsub2 = hmsStore.subscribe((enabled: boolean) => {
+        isAudioEnabled = enabled;
+    }, selectIsPeerAudioEnabled(peer.id));
+
+    onDestroy(() => {unsub1();unsub2();});
 </script>
 
 <div class="peer-container">
@@ -31,6 +37,13 @@
     </div>
     <div class="network-score">
         <ConnectionQuality peerId={peer.id}/>
+    </div>
+    <div class="mic-state">
+        {#if !isAudioEnabled}
+            <MicOffIcon size="14"/>
+        {:else}
+            <MicIcon size="14"/>
+        {/if}
     </div>
 </div>
 
@@ -74,5 +87,18 @@
         position: absolute;
         bottom: 0.25rem;
         left: 0.25rem;
+    }
+
+    .mic-state {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0.25rem;
+        right: 0.25rem;
+        color: white;
+        background: #CC525F;
+        border-radius: 100rem;
+        padding: 6px;
     }
 </style>

@@ -88,7 +88,7 @@ Ever had those "I wonder whose internet is bad" moment in a Video call. The SDK 
 - Create a new [`ConnectionQuality.svelte`](./src/routes/_components/ConnectionQuality.svelte) component which takes in a peer id and renders the network quality score for the peer in form of Wi-Fi signal. It does by using SVG images, there is one svg image for when connection score is 0(disconnected), and a set of arcs resembling the Wi-Fi signal colored per the score for connection score > 0. 
 - Add the new component in `Peer.svelte` to show on the tile on bottom left.
 
-> To know more about what different connection scores represent check out the [docs](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality#score-interpretation)
+> To know more about what different connection scores represent check out the [SDK docs](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality#score-interpretation)
 
 ## Notifications([Commit](https://github.com/100mslive/svelte-100ms/commit/6deb8ef704e61ec52870da1a9122dbdbe1c2f456))
 
@@ -115,10 +115,18 @@ Examples -
 
 ## Autoplay Error([Commit](https://github.com/100mslive/svelte-100ms/commit/1a4fd94a36b30ab39abddb76a15c2a5141bc0a61))
 
-Most browsers have a restriction on audio autoplay where audio is allowed only if the user has interacted with the page. This is very important error to handle as when this happens you user won't be able to hear others in the room. [Docs](https://www.100ms.live/docs/javascript/v2/features/error-handling#handling-autoplay-error).
+Most browsers have a restriction on audio autoplay where audio is allowed only if the user has interacted with the page. This is very important error to handle as when this happens you user won't be able to hear others in the room. [SDK Docs](https://www.100ms.live/docs/javascript/v2/features/error-handling#handling-autoplay-error).
 
 ![Autoplay Error](static/autoplayError.png)
 
 - Create an [`AutoPlayError.svelte`](./src/routes/_components/AutoPlayError.svelte) component responsible for letting the user know about the issue and giving an actionable button to resume audio which will call the SDK function.
 - Add an else if block in the Notifications component for autoplay error(code = 3008) and open the AutoPlayError component in a modal when it happens.
 
+
+## Muted State on Peer Tile
+
+Let's display the audio mute state on the peer tile. [SDK Docs](https://www.100ms.live/docs/javascript/v2/guides/useful-selectors#how-do-i-know-the-status-of-remote-mic-video-status).
+
+![Remote Muted State](static/remoteMuteState.png)
+
+- Show either of Mic or MicOff icon based on audio state in Peer component.
