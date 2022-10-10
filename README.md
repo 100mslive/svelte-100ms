@@ -113,7 +113,7 @@ Examples -
 > The device permissions error is the most common errors seen in production use. It can be very useful to tell user more about giving device permissions in case of such errors.
 
 
-## Autoplay Error
+## Autoplay Error([Commit](https://github.com/100mslive/svelte-100ms/commit/1a4fd94a36b30ab39abddb76a15c2a5141bc0a61))
 
 Most browsers have a restriction on audio autoplay where audio is allowed only if the user has interacted with the page. This is very important error to handle as when this happens you user won't be able to hear others in the room. [Docs](https://www.100ms.live/docs/javascript/v2/features/error-handling#handling-autoplay-error).
 
