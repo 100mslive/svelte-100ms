@@ -16,9 +16,9 @@ Feel free to reach out to us over [Discord](https://100ms.live/discord).
 Use the above Deploy button to create a clone of this branch in your GitHub and deploy on Vercel. You can then commit any changes in your personal repo and see them reflected in the deployment. 
 
 
-[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/github/100mslive/svelte-100ms/tree/features)
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/github/100mslive/svelte-100ms/tree/features?file=/src/routes/%2Bpage.svelte)
 
-You can also try out the code with live demo on CodeSandbox by going to the above link.
+You can also try out the code with live demo on CodeSandbox by going to the above link. If CodeSandbox shows an error, reload its demo url.
 
 # Features
 
