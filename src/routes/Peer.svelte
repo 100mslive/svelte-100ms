@@ -1,12 +1,13 @@
 <script lang="ts">
     import Avatar from "./_components/Avatar.svelte";
-    import Video from "./Video.svelte";
+    import Video from './Video.svelte';
     import {hmsStore} from "./hms.js";
     import type {HMSVideoTrack} from "@100mslive/hms-video-store";
     import { selectCameraStreamByPeerID, selectIsPeerAudioEnabled } from '@100mslive/hms-video-store';
-    import {onDestroy} from "svelte";
+    import { onDestroy, onMount } from 'svelte';
     import ConnectionQuality from "./_components/ConnectionQuality.svelte";
     import { MicOffIcon, MicIcon } from 'svelte-feather-icons';
+    import { addAudioBorder } from './_components/audioLevel';
 
     export let peer;
 
@@ -21,17 +22,20 @@
         isAudioEnabled = enabled;
     }, selectIsPeerAudioEnabled(peer.id));
 
+    let peerTileElement: HTMLElement;
+    onMount(() => addAudioBorder(peer.id, peerTileElement));
+
     onDestroy(() => {unsub1();unsub2();});
 </script>
 
-<div class="peer-container">
+<div class="peer-container" bind:this={peerTileElement}>
     {#if (!videoTrack?.enabled || videoTrack?.degraded)}
         <!--show avatar if video is either muted or degraded-->
         <div class="avatar-container">
             <Avatar name={peer.name}/>
         </div>
     {/if}
-    <Video isLocal={peer.isLocal} peerId={peer.id}/>
+    <Video mirror={peer.isLocal} trackId={videoTrack?.id}/>
     <div class="peer-name">
         {peer.name} {peer.isLocal ? "(You)" : ""}
     </div>
