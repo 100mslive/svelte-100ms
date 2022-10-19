@@ -18,6 +18,8 @@
         />
     </a>
 
+    <h2 class="title">Conferencing</h2>
+
     <div class="right">
         {#if $hmsIsConnected}
             <button title="Leave" class="btn-danger leave-btn space-right" on:click={leaveRoom}> Leave Room </button>
@@ -44,5 +46,10 @@
 
     .space-right {
         margin-right: 10px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 2rem;
     }
 </style>

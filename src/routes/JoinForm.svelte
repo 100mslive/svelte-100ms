@@ -90,8 +90,4 @@
     form h2 {
         margin-bottom: 20px;
     }
-
-    .join-btn {
-        cursor: pointer;
-    }
 </style>

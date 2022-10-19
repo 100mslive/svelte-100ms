@@ -20,13 +20,14 @@
     const deviceModal: Writable<SvelteComponent> = writable(null);
     const showDeviceModal = () => deviceModal.set(DeviceSettings);
 
+    const closeDeviceModal = () => deviceModal.set(null);
     const toggleChat = () => {isChatOpen.set(!$isChatOpen)};
 </script>
 
 <footer class="control-bar">
     <div class="control-bar-left"></div>
     <div class="control-bar-center">
-        <button class="btn-control" on:click={toggleAudio}>
+        <button class="btn-control" on:click={toggleAudio} class:pressed={!$hmsIsAudioEnabled}>
             {#if $hmsIsAudioEnabled}
                 <MicIcon/>
             {:else}
@@ -34,7 +35,7 @@
             {/if}
         </button>
 
-        <button class="btn-control" on:click={toggleVideo}>
+        <button class="btn-control" on:click={toggleVideo} class:pressed={!$hmsIsVideoEnabled}>
             {#if $hmsIsVideoEnabled}
                 <VideoIcon/>
             {:else}
@@ -42,15 +43,15 @@
             {/if}
         </button>
 
-        <button class="btn-control" on:click={showDeviceModal}>
+        <button class="btn-control" on:click={showDeviceModal} class:pressed={!!$deviceModal}>
             <SettingsIcon/>
         </button>
 
-        <Modal show={$deviceModal} styleWindow={{ background: 'rgb(44,56,63)', color: 'white' }} closeButton={false}/>
+        <Modal show={$deviceModal} styleWindow={{ background: 'rgb(44,56,63)', color: 'white' }} on:close={closeDeviceModal} closeButton={false}/>
     </div>
 
     <div class="control-bar-right">
-        <button class="btn-control" on:click={toggleChat}>
+        <button class="btn-control" on:click={toggleChat} class:pressed={$isChatOpen}>
             <MessageSquareIcon/>
         </button>
     </div>
@@ -80,7 +81,7 @@
         width: 45px;
         height: 45px;
 
-        background-color: #607d8b;
+        background-color: #263238;
 
         font-size: 12px;
         text-transform: uppercase;
@@ -93,5 +94,17 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
         cursor: pointer;
         margin: 3px;
+    }
+
+    .btn-control.pressed {
+        background-color: #345b6e;
+    }
+
+    .btn-control.pressed:hover {
+        background-color: #2b4a5b;
+    }
+
+    .btn-control:hover {
+        background-color: #192425;
     }
 </style>

@@ -32,11 +32,16 @@ h5 {
 	font-family: inherit;
 	font-size: 14px;
 	color: white;
+}
 
-	cursor: pointer;
+.btn-primary:hover {
+	background-color: #104e93;
 }
 
 .btn-danger {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 6px 14px;
 
 	background-color: #f44336;
@@ -49,6 +54,10 @@ h5 {
 	border-radius: 4px;
 
 	cursor: pointer;
+}
+
+.btn-danger:hover {
+	background-color: #b9352b;
 }
 
 :root {

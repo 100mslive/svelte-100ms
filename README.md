@@ -24,7 +24,7 @@ You can also try out the code with live demo on CodeSandbox by going to the abov
 
 These are present in the order they were added in the repo to follow through easily. Note that sometimes minor bugs in a feature are fixed in subsequent commits, so in case you're picking up from any single component, do check out the latest state of the corresponding file in the branch.
 
-## Device Settings([Commit1](https://github.com/100mslive/svelte-100ms/commit/936ff04f6a4631b981f802211bf53ff314695c44), [Commit2](https://github.com/100mslive/svelte-100ms/commit/183b24b820c70f3987c28581104ed516b3ca7fcc))
+## 1. Device Settings([Commit1](https://github.com/100mslive/svelte-100ms/commit/936ff04f6a4631b981f802211bf53ff314695c44), [Commit2](https://github.com/100mslive/svelte-100ms/commit/183b24b820c70f3987c28581104ed516b3ca7fcc))
 
 Giving user the ability to change between audio and video devices is a must for any Video Call Application. The relevant SDK's selectors and methods are documented [here](https://www.100ms.live/docs/javascript/v2/features/device-change).
 
@@ -37,7 +37,7 @@ Changes done -
 - Create a new button in Footer which can be clicked to open the Device Settings modal
 - Add some css to Device Settings to make it look consistent
 
-## Avatar when video is muted or degraded([Commit1](https://github.com/100mslive/svelte-100ms/commit/f799bbb86f763297cf0ac424566f0289b1f8237a), [Commit2](https://github.com/100mslive/svelte-100ms/commit/b9dc19904be80530b1fec95995c990a68dcea17d))
+## 2. Avatar when video is muted or degraded([Commit1](https://github.com/100mslive/svelte-100ms/commit/f799bbb86f763297cf0ac424566f0289b1f8237a), [Commit2](https://github.com/100mslive/svelte-100ms/commit/b9dc19904be80530b1fec95995c990a68dcea17d))
 
 Right now when the video is muted, we're showing blank page, let's change this to show a nice looking Avatar based on name.
 
@@ -54,7 +54,7 @@ Changes done -
 > An important point to note here is that Video component should always be part of the dom. That is a code like this - `if (condition) {Avatar} else {Video}` is not correct(though it will work). Avatar needs to be present as an overlay on top of the Video component, than there being a conditional render between Avatar and Video. This is to avoid video element being frequently recreated as well as for the sdk to be aware of the UI's intention to show video in case of degradation.
 
 
-## Audio Level([Commit](https://github.com/100mslive/svelte-100ms/commit/d669a10532a5c13d27a4b6160494337067ab1819))
+## 3. Audio Level([Commit](https://github.com/100mslive/svelte-100ms/commit/d669a10532a5c13d27a4b6160494337067ab1819))
 
 It's helpful to show the audio level in a video call to know who is speaking at the moment. Let's implement this following the docs [here](https://www.100ms.live/docs/javascript/v2/advanced-features/audio-level). The way we'll show it is by creating a box-shadow around the video element of the peer who is speaking.
 
@@ -62,15 +62,16 @@ It's helpful to show the audio level in a video call to know who is speaking at 
 
 Changes done - 
 - Add logic in `Video.svelte` to monitor audio level for the peer and add border appropriately.
+- Note that a later refactor separates the core logic out in a different audioLevel.ts file and moves applying audio border to `Peer.svelte` component. [Commit](https://github.com/100mslive/svelte-100ms/commit/df8902bb96f041c0b02ca9a8f83c653a0fc0983c).
 
 
-## Join Improvement - Remember name and token, also take from query param([Commit](https://github.com/100mslive/svelte-100ms/commit/15010972fbd07e126fccbf33232fc0a3d8555780))
+## 4. Join Improvement - Remember name and token, also take from query param([Commit](https://github.com/100mslive/svelte-100ms/commit/15010972fbd07e126fccbf33232fc0a3d8555780))
 
 - Remember name and token by saving them to local storage so the user doesn't have to enter them every time.
 - Add two query params, name and token so a shareable link can be made with token already embedded in. An url can be made in this form now - `baseUrl?token=<auth_token>`, to have the token prefilled.
 - Change the button text from "Join" to "Joining..." when join is in progress.
 
-## Add Share/Copy link button([Commit](https://github.com/100mslive/svelte-100ms/commit/1accff7dda439b2fc3e810c017f83c522baa7889))
+## 5. Add Share/Copy link button([Commit](https://github.com/100mslive/svelte-100ms/commit/1accff7dda439b2fc3e810c017f83c522baa7889))
 
 The purpose of share link button is to get a sharable link(copied to clipboard) which can be sent to others for joining the same call.
 
@@ -80,13 +81,13 @@ The purpose of share link button is to get a sharable link(copied to clipboard) 
 - Create a writable tokenStore to hold the auth token which will be used to create the sharable url. This is created in `hmsStores.ts`.
 - Create a new [`ShareLink`](./src/routes/_components/ShareLink.svelte) component to copy the url and put it in Header component
 
-## Use Icons in Footer([Commit](https://github.com/100mslive/svelte-100ms/commit/e9b165accc58b04d3a1ef4397a82dc9ac3445a1c))
+## 6. Use Icons in Footer([Commit](https://github.com/100mslive/svelte-100ms/commit/e9b165accc58b04d3a1ef4397a82dc9ac3445a1c))
 
 ![Footer Icons](static/footerIcons.png)
 
 - Use Feather icons for audio, video and device settings
 
-## Network Quality([Commit](https://github.com/100mslive/svelte-100ms/commit/6796c79e61d7fe14c4689790337c00b69cb61209))
+## 7. Network Quality([Commit](https://github.com/100mslive/svelte-100ms/commit/6796c79e61d7fe14c4689790337c00b69cb61209))
 
 Ever had those "I wonder whose internet is bad" moment in a Video call. The SDK gives the connection score of everyone in the room for times like these, as documented [here](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality). Let's build it out in the UI.
 
@@ -97,7 +98,7 @@ Ever had those "I wonder whose internet is bad" moment in a Video call. The SDK 
 
 > To know more about what different connection scores represent check out the [SDK docs](https://www.100ms.live/docs/javascript/v2/advanced-features/connection-quality#score-interpretation)
 
-## Notifications([Commit](https://github.com/100mslive/svelte-100ms/commit/6deb8ef704e61ec52870da1a9122dbdbe1c2f456))
+## 8. Notifications([Commit](https://github.com/100mslive/svelte-100ms/commit/6deb8ef704e61ec52870da1a9122dbdbe1c2f456))
 
 Notifications can be used to show toast messages for events happening in the room, like a peer joining, receiving a message, device change, errors, reconnections, disconnections etc.
 
@@ -120,7 +121,7 @@ Examples -
 > The device permissions error is the most common errors seen in production use. It can be very useful to tell user more about giving device permissions in case of such errors.
 
 
-## Autoplay Error([Commit](https://github.com/100mslive/svelte-100ms/commit/1a4fd94a36b30ab39abddb76a15c2a5141bc0a61))
+## 9. Autoplay Error([Commit](https://github.com/100mslive/svelte-100ms/commit/1a4fd94a36b30ab39abddb76a15c2a5141bc0a61))
 
 Most browsers have a restriction on audio autoplay where audio is allowed only if the user has interacted with the page. This is very important error to handle as when this happens you user won't be able to hear others in the room. [SDK Docs](https://www.100ms.live/docs/javascript/v2/features/error-handling#handling-autoplay-error).
 
@@ -130,7 +131,7 @@ Most browsers have a restriction on audio autoplay where audio is allowed only i
 - Add an else if block in the Notifications component for autoplay error(code = 3008) and open the AutoPlayError component in a modal when it happens.
 
 
-## Muted State on Peer Tile([Commit](https://github.com/100mslive/svelte-100ms/commit/1f35bfde4667f2483226308a03e35bd50e01baf4))s
+## 10. Muted State on Peer Tile([Commit](https://github.com/100mslive/svelte-100ms/commit/1f35bfde4667f2483226308a03e35bd50e01baf4))s
 
 Let's display the audio mute state on the peer tile. [SDK Docs](https://www.100ms.live/docs/javascript/v2/guides/useful-selectors#how-do-i-know-the-status-of-remote-mic-video-status).
 
@@ -139,7 +140,7 @@ Let's display the audio mute state on the peer tile. [SDK Docs](https://www.100m
 - Show either of Mic or MicOff icon based on audio state in Peer component.
 
 
-## Chat Messages([Commit](https://github.com/100mslive/svelte-100ms/commit/de186ef6c517d95334031e18b2d02cc45683f8fb))
+## 11. Chat Messages([Commit](https://github.com/100mslive/svelte-100ms/commit/de186ef6c517d95334031e18b2d02cc45683f8fb))
 
 A video call app isn't complete without the ability to send messages in the room. Let's build the chat component with the help of the API documented in [SDK Docs](https://www.100ms.live/docs/javascript/v2/features/chat).
 
@@ -150,3 +151,9 @@ A video call app isn't complete without the ability to send messages in the room
 - Add a button in Footer to toggle chat and show the chat component when it's toggled to true.
 - Also change the footer buttons to square instead of circle, square looks better.
 - Send a toast when new message is received([Commit](https://github.com/100mslive/svelte-100ms/commit/0176eabbb7cb2c9e09f61bb84db6ab361b107362))
+
+## 12. Refactoring([Commit](https://github.com/100mslive/svelte-100ms/commit/df8902bb96f041c0b02ca9a8f83c653a0fc0983c))
+
+- Before we move on to the next Gallery and ScreenShare component, we'll refactor the current code so the Video Component can be used by Screenshare as well. For this, audio border is separated out and shown directly at Peer level. And video component is changed to take in track id instead of peer id.
+- Also, a bunch of cosmetic changes, details in the commit
+
