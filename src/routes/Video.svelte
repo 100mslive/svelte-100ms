@@ -5,6 +5,7 @@
 
     export let mirror;
     export let trackId;
+		export let objectFit = "cover";
 
 		let unsub;
     let videoElement; // this will be populated on mount
@@ -32,7 +33,7 @@
 		onDestroy(() => unsub?.());
 </script>
 
-<video class="peer-video"
+<video class="peer-video" style='--objectFit: {objectFit}'
     class:mirror={mirror}
     bind:this={videoElement}
     autoPlay
@@ -46,7 +47,7 @@
         height: 100%;
         width: 100%;
         border-radius: 0.25rem;
-        object-fit: cover;
+        object-fit: var(--objectFit);
     }
 
     /*mirror the video for local peer*/
