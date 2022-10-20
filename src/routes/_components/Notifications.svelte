@@ -34,11 +34,15 @@
 					if (error.isTerminal) {
 						toast.terminal(`Error, you're disconnected: ${error.message}: ${error.description}`);
 					} else if ([3001, 3011].includes(code)) { // device permission error
-						const isSystemError = code === 3011;
+						const isSystemError = code === 3011; // there are two types - system denied permission or user denied permission
+						const isScreenShare = error.message.includes("screen");
 						const action = isSystemError
 							? "Please enable permissions from system settings"
 							: "Please enable permissions from the address bar or browser settings";
-						toast.error(`${error.message} => ${action}`, false);
+						if (isSystemError || !isScreenShare) {
+							// screenshare user denied permission is pretty obvious(user clicks cancel), don't show it
+							toast.error(`${error.message} => ${action}`, false);
+						}
 					} else if (code === 3008) { // autoplay error
 						unClosableModal.set(bind(AutoPlayError, {onClose: closeUnClosableModal}));
 					} else {

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { hmsActions } from './hms';
-    import { hmsIsAudioEnabled, hmsIsVideoEnabled, isChatOpen } from './hmsStores';
+    import { hmsAmIScreenSharing, hmsIsAudioEnabled, hmsIsVideoEnabled, isChatOpen } from './hmsStores';
     import {writable} from "svelte/store";
     import type {Writable} from "svelte/store";
     import Modal from "svelte-simple-modal";
@@ -8,6 +8,7 @@
     import {MicIcon, MicOffIcon, VideoIcon, VideoOffIcon, SettingsIcon, MessageSquareIcon} from "svelte-feather-icons";
     import { SvelteComponent } from 'svelte';
     import Chat from './_components/Chat.svelte';
+    import ShareScreenIcon from './_icons/ShareScreenIcon.svelte';
 
     function toggleAudio() {
         hmsActions.setLocalAudioEnabled(!$hmsIsAudioEnabled);
@@ -15,6 +16,10 @@
 
     function toggleVideo() {
         hmsActions.setLocalVideoEnabled(!$hmsIsVideoEnabled);
+    }
+
+    function toggleScreen() {
+        hmsActions.setScreenShareEnabled(!$hmsAmIScreenSharing);
     }
 
     const deviceModal: Writable<SvelteComponent> = writable(null);
@@ -41,6 +46,10 @@
             {:else}
                 <VideoOffIcon/>
             {/if}
+        </button>
+
+        <button class="btn-control" on:click={toggleScreen}  class:pressed={$hmsAmIScreenSharing}>
+            <ShareScreenIcon/>
         </button>
 
         <button class="btn-control" on:click={showDeviceModal} class:pressed={!!$deviceModal}>

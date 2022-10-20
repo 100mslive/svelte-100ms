@@ -7,9 +7,12 @@ import {
 	selectHMSMessages,
 	selectIsConnectedToRoom,
 	selectIsLocalAudioEnabled,
+	selectIsLocalScreenShared,
 	selectIsLocalVideoEnabled,
+	selectIsSomeoneScreenSharing,
 	selectLocalMediaSettings,
-	selectPeers
+	selectPeers,
+	selectPeerScreenSharing
 } from '@100mslive/hms-video-store';
 
 export const tokenStore = writable();
@@ -32,3 +35,8 @@ export const hmsSelectedDevices = hmsToSvelteStore(selectLocalMediaSettings);
 
 // UI things
 export const isChatOpen = writable(false);
+
+// Screenshare related
+export const hmsAmIScreenSharing = hmsToSvelteStore(selectIsLocalScreenShared);
+export const hmsIsAnyoneScreenSharing = hmsToSvelteStore(selectIsSomeoneScreenSharing);
+export const hmsPeerScreenSharing = hmsToSvelteStore(selectPeerScreenSharing);
