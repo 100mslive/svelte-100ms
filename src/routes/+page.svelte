@@ -22,7 +22,7 @@
 </svelte:head>
 
 <Notifications/>
-<div class="layout" class:join={!$hmsIsConnected} class:conference={$hmsIsConnected}>
+<div class="layout">
     <div class="header">
         <Header/>
     </div>
@@ -40,21 +40,18 @@
 
 <style>
     .layout {
-        display: grid;
-        grid-template-columns: 100%;
+        display: flex;
+        flex-direction: column;
         height: 100%;
-        grid-gap: 10px;
-    }
-
-    .layout.join{
-        grid-auto-rows: minmax(min-content, max-content);
-    }
-
-    .layout.conference {
-        grid-template-rows: auto 1fr auto;
     }
 
     .conference-container {
-        overflow: hidden;
+        flex-grow: 1;
+        overflow: auto;
+        height: 100%;
+    }
+
+    .footer {
+        flex-shrink: 0;
     }
 </style>

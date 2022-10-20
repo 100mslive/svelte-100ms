@@ -157,7 +157,7 @@ A video call app isn't complete without the ability to send messages in the room
 - Before we move on to the next Gallery and ScreenShare component, we'll refactor the current code so the Video Component can be used by Screenshare as well. For this, audio border is separated out and shown directly at Peer level. And video component is changed to take in track id instead of peer id.
 - Also, a bunch of cosmetic changes, details in the [commit](https://github.com/100mslive/svelte-100ms/commit/4814d271016d1544ff1528db92396b4780212244).
 
-## 13. Gallery Layout
+## 13. Gallery Layout([Commit]())
 
 The current way of iterating over peers and rendering them using css grid view is suboptimal and leads to a lot of space unused. For e.g. for 2 person call the two tiles can each take approx half of the screen instead of the smaller tiles like currently. It also looks pretty bad when rendering on mobile devices. Formally the problem is this -
 > Given `n` number of square tiles, find the best fit for packing those tiles in a parent container of height `h` and width `w`. The result should tell the final dimensions of the tiles, number of rows, and tiles to have per row.
@@ -174,4 +174,22 @@ Changes -
 - A bunch of `height: 100%` at different places to force using the full `100vh` height coming from body.
 
 
+## 14. Screenshare
 
+By this point we've pretty much covered all essential features of a Video calling app except one, Screen sharing. Let's now add Screen sharing to our app. [SDK Docs](https://www.100ms.live/docs/javascript/v2/features/screen-share).
+
+![Screenshare](static/screenshare.png)
+
+**But is it responsive?** - Yes!
+
+![Responsive Screenshare](static/screenshare.gif)
+
+Changes
+
+- We add new stores in hmsStores to keep track of screenshare related state.
+- A screenshare svg icon is added as [`ShareScreenIcon.svelte`](./src/routes/_icons/ShareScreenIcon.svelte).
+- A button is added in `Footer.svelte` component to toggle screenshare.
+- If screenshare button is clicked but then cancel is pressed, the corresponding error notification is ignored in `Notifications.svelte`. There is not much point in showing it.
+- A [`ScreenShare.svelte`](./src/routes/_components/ScreenShare.svelte) component to render the screenshare using the earlier created Video component.
+- For showing the screenshare in UI, we'll show it in center, and the gallery view will show on right on big devices and on bottom on small ones. Changes are in `Conference` component.
+- Video component is also modified to support taking in objectFit param, which we'll set to contain for screenshare, so the video is not cropped and shrunk to fit into the container. 

@@ -58,7 +58,7 @@
     .tile {
         width: var(--width);
         height: var(--height);
-				padding: 1rem;
+				padding: 5px;
     }
 
 </style>
