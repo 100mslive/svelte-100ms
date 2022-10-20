@@ -18,7 +18,7 @@
         />
     </a>
 
-    <h2 class="title">Conferencing</h2>
+    <h3 class="title">Conferencing</h3>
 
     <div class="right">
         {#if $hmsIsConnected}
@@ -37,6 +37,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .right {

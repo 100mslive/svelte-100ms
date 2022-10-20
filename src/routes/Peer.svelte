@@ -70,8 +70,8 @@
         background: rgb(52, 67, 75);
         border-radius: 0.25rem;
         position: relative;
-        height: 250px;
-        width: 250px;
+        height: 100%;
+        width: 100%;
     }
 
     .avatar-container{

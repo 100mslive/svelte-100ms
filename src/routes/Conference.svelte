@@ -1,30 +1,18 @@
 <script>
-    import {hmsPeers} from "./hmsStores.ts";
-    import Peer from "./Peer.svelte";
+import GalleryView from './_components/GalleryView.svelte';
 </script>
 
 
 <section class="conference-section">
-    <div class="peers-container">
-        {#each $hmsPeers as peer (peer.id)}
-            <Peer {peer} />
-        {/each}
-    </div>
+    <GalleryView/>
 </section>
 
 <style>
     .conference-section {
-        max-width: 960px;
+        height: 100%;
+        width: 100%;
 
-        padding: 20px 30px;
+        padding: 10px;
         margin: 0 auto;
-    }
-
-    .peers-container {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(min-content, 1fr));
-        place-items: center;
-        grid-gap: 10px;
-        margin-top: 15px;
     }
 </style>
