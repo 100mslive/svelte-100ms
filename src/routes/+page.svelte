@@ -22,10 +22,39 @@
 </svelte:head>
 
 <Notifications/>
-<Header/>
-{#if $hmsIsConnected}
-    <Conference />
-    <Footer/>
-{:else}
-    <JoinForm />
-{/if}
+<div class="layout" class:join={!$hmsIsConnected} class:conference={$hmsIsConnected}>
+    <div class="header">
+        <Header/>
+    </div>
+    {#if $hmsIsConnected}
+        <div class="conference-container">
+            <Conference />
+        </div>
+        <div class="footer">
+            <Footer/>
+        </div>
+    {:else}
+        <JoinForm />
+    {/if}
+</div>
+
+<style>
+    .layout {
+        display: grid;
+        grid-template-columns: 100%;
+        height: 100%;
+        grid-gap: 10px;
+    }
+
+    .layout.join{
+        grid-auto-rows: minmax(min-content, max-content);
+    }
+
+    .layout.conference {
+        grid-template-rows: auto 1fr auto;
+    }
+
+    .conference-container {
+        overflow: hidden;
+    }
+</style>

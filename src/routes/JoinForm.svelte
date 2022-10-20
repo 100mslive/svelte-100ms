@@ -55,7 +55,7 @@
 <style>
 
     form {
-        max-width: 450px;
+        width: min(100%, 500px);
 
         margin: 30px auto;
         padding: 20px;

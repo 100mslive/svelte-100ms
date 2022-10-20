@@ -152,8 +152,26 @@ A video call app isn't complete without the ability to send messages in the room
 - Also change the footer buttons to square instead of circle, square looks better.
 - Send a toast when new message is received([Commit](https://github.com/100mslive/svelte-100ms/commit/0176eabbb7cb2c9e09f61bb84db6ab361b107362))
 
-## 12. Refactoring([Commit](https://github.com/100mslive/svelte-100ms/commit/df8902bb96f041c0b02ca9a8f83c653a0fc0983c))
+## 12. Refactoring([Commit1](https://github.com/100mslive/svelte-100ms/commit/df8902bb96f041c0b02ca9a8f83c653a0fc0983c), [Commit2](https://github.com/100mslive/svelte-100ms/commit/4814d271016d1544ff1528db92396b4780212244))
 
 - Before we move on to the next Gallery and ScreenShare component, we'll refactor the current code so the Video Component can be used by Screenshare as well. For this, audio border is separated out and shown directly at Peer level. And video component is changed to take in track id instead of peer id.
-- Also, a bunch of cosmetic changes, details in the commit
+- Also, a bunch of cosmetic changes, details in the [commit](https://github.com/100mslive/svelte-100ms/commit/4814d271016d1544ff1528db92396b4780212244).
+
+## 13. Gallery Layout
+
+The current way of iterating over peers and rendering them using css grid view is suboptimal and leads to a lot of space unused. For e.g. for 2 person call the two tiles can each take approx half of the screen instead of the smaller tiles like currently. It also looks pretty bad when rendering on mobile devices. Formally the problem is this -
+> Given `n` number of square tiles, find the best fit for packing those tiles in a parent container of height `h` and width `w`. The result should tell the final dimensions of the tiles, number of rows, and tiles to have per row.
+> 
+> A generalised framing of above would have rectangle tiles with some aspect ratio `a` with square tiles being a special case when a = 1.
+
+![Gallery View](static/gallery.gif)
+
+Changes -
+
+- The main page layout(in `+page.svelte`) is changes to use grid view for arranging header, footer and conference. Footer's fixed position is removed. Header is wrapped for small screens. [Grid view](https://css-tricks.com/snippets/css/complete-guide-grid/) is best suited for layouts and makes the components easier to control.
+- A [`bestFit.ts`](./src/routes/_components/bestFit.ts) file is written with some help from [this answer](https://math.stackexchange.com/a/2570649) and the code [here](https://github.com/fzembow/rect-scaler/blob/master/src/index.ts). It exposes a function which can figure out the optimal layout.
+- A [`GalleryView.svelte`](./src/routes/_components/GalleryView.svelte) component is put to get the list of all peers and display them in a gallery view. It uses the bestFit function exposed above to figure out the layout. The layout is recalculated if number of peers change or the dimensions of the gallery container change(figured out using [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) API). CSS variables are used to pass down the changes to css styles.
+- A bunch of `height: 100%` at different places to force using the full `100vh` height coming from body.
+
+
 
